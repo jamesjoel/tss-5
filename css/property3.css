@@ -1,0 +1,38 @@
+body{
+    background-color: #656565;
+}
+.box{
+    height: 300px;
+    width: 300px;
+    /* background-color: #000; */
+    /* border-top : 15px solid red;
+    border-bottom : 15px solid red;
+    border-left : 15px solid #fff;
+    border-right : 15px solid #fff; */
+    /* all side */
+    border:5px solid #fff;
+    border-radius: 100px 100px 100px 0px;
+    /*              t   r   b   l         */
+    transition: 2s;
+    
+}
+
+.box:hover{
+    border:25px solid green;
+    background-color: #000;
+}
+
+.box2{
+    height: 200px;
+    width: 200px;
+    background-color: rgb(39, 150, 224);
+    
+}
+.box2:hover{
+    background-color: #000;
+}
+
+/* 
+    
+
+*/

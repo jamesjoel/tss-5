@@ -1,0 +1,22 @@
+body{
+    background-color: #a664e0;
+}
+.box{
+    height: 200px;
+    width: 200px;
+    background-color: red;
+    color: #fff;
+    background-image: url("3.jpg");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    
+    border-radius: 200px;
+    transition: 1s;
+    /*                w      h      */
+}
+.box:hover{
+    transform: rotate(360deg);
+    border-radius: 0;
+    height: 300px;
+    width: 300px;
+}

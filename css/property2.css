@@ -1,0 +1,21 @@
+body{
+    background-color: #74ACD1;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.box{
+    height: 300px;
+    width: 400px;
+    background-color: rgb(95, 25, 37);
+
+    /* text-align: justify;   left, right, center, justify */
+    /* text-decoration: line-through; underline, overline, line-through, none */
+    /* text-transform: capitalize; */
+    /* text-indent: 50px; */
+    /* line-height: 30px; */
+    /* word-spacing: 10px; */
+    /* letter-spacing: 10px; */
+    font-size: 20px;   
+    color : #fff;
+    /* font-weight: bold; */
+    font-style: italic;
+}
