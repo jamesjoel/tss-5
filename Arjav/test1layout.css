@@ -1,0 +1,135 @@
+body{
+    background-color: cornflowerblue;
+    margin: 0;
+    padding: 0;
+}
+.upper-header{
+    background-color: cornflowerblue;
+    height: 50px;
+    width: 100%;
+}
+.inside{
+   margin: 0 auto;
+   width: 85%;
+}
+.upper-header button{
+    border-radius: 50px;
+    height: 40px;
+    width: 80px;
+    background-color:teal;
+    float: right;
+    margin: 10px;
+    transition:1sec;
+}
+.header{
+    margin-top: 0;
+    background-color: crimson;
+    height: 200px;  
+    padding: 0 0 4px 0;        
+}
+.navigationbar{
+   /*background-color: green;*/
+    float: inline-end;
+    height: 180px;
+    width: 600px;
+    margin: 0 0 100px 0;
+    padding: 20px 0 0 0;
+    text-align: justify;
+}
+.navigationbar ul{
+    list-style-type: none;       
+    font-size: larger;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 
+    'Lucida Sans Unicode', Geneva, Verdana, sans-serif ;
+    color: #fff;
+}
+.navigationbar ul li a{
+    text-decoration: none;
+    float: left;
+    padding: 20px;
+    justify-content: space-evenly;
+    color: #fff;
+}
+.upper-header button:hover{
+    background-color: black;
+    color: #fff;
+}
+.inside-content{
+    background-color: #fff;
+    height: 810px;
+    margin: 0 auto;
+    width: 85%;
+    padding: 10px 0 0 0;
+}
+.imagebox{
+    height: 400px;
+    width: 100%;
+    background-color: darkblue;
+}
+
+.box1{
+    height: 100px;
+    width: 200px;
+    background-color: crimson;
+    border: double #fff;
+    padding: 50px;
+    margin: 50px 0 0 20px;
+    align-items: start;
+}
+   
+.box2{
+    height: 100px;
+    width: 200px;
+    background-color: crimson;
+    border: double #fff;
+    padding:50px;
+    margin: 20px 0 0 20px;
+    align-items: center;
+}
+.box3{
+    height: 100px;
+    width: 200px;
+    background-color: crimson;
+    border: double #fff;
+    padding: 50px;
+    margin: 20px 0 0 20px;
+    align-items: end;
+}
+.box1:hover{
+    border: solid #fff;
+    border-radius: 50px;
+}
+.box2:hover{
+    border: solid #fff;
+    border-radius: 50px;
+}
+.box3:hover{
+    border: solid #fff;
+    border-radius: 50px;
+}
+.mainbox{
+    color: antiquewhite;
+    height: 400;
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+}
+.footer{
+    background-color: blue;
+    height: 20px;
+    width: 100%;
+    padding: 20px;
+    text-align: center;
+}
+.navigationbar ul li a{
+    text-decoration: none;
+    float: left;
+    padding: 20px;
+    justify-content: space-evenly;
+    color: #fff;
+    transition: .5s;
+    
+}
+.navigationbar ul li a:hover{
+    color: gold;
+}
