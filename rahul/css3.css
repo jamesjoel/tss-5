@@ -1,0 +1,11 @@
+body{
+    background-image: linear-gradient(#611084, rgb(201, 30, 244), #0a020e);
+    height: 500px;
+}
+h1{
+    display: inline-block;
+    color: #fff;
+    border : 2px solid #fff;
+    background-color: #811AAD;
+    padding: 20px;
+}

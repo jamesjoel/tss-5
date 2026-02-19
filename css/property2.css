@@ -10,12 +10,12 @@ body{
     /* text-align: justify;   left, right, center, justify */
     /* text-decoration: line-through; underline, overline, line-through, none */
     /* text-transform: capitalize; */
-    /* text-indent: 50px; */
+    /* text-indent: 100px; */
     /* line-height: 30px; */
     /* word-spacing: 10px; */
     /* letter-spacing: 10px; */
     font-size: 20px;   
-    color : #fff;
+    /* color : blue; */
     /* font-weight: bold; */
-    font-style: italic;
+    /* font-style: italic; */
 }

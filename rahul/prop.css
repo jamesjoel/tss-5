@@ -1,0 +1,23 @@
+body{
+    background-color: #415263;
+}
+.box{
+    height: 200px;
+    width: 200px;
+    background-color: #fff;
+    background-image: url("https://m.media-amazon.com/images/I/71Xu66Nem-L._AC_UF894,1000_QL80_.jpg");
+    background-size: 100% 100%;
+    
+    /* border : 15px solid red; */
+    /* border-top: 10px solid red; */
+    /* border-radius: 100px 100px 100px 0px; */
+
+    /*             t    r  l  b  */
+    transition: 3s;
+    /* border-radius: 200px; */
+}
+.box:hover{
+    /* transform: rotate(360deg); */
+    background-size: 200% 200%;
+    font-size: 25px;
+}
