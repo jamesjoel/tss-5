@@ -1,0 +1,18 @@
+{
+  "type": "module",
+  "name": "exp1",
+  "version": "0.0.2",
+  "description": "this is my first express project",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "sample"
+  ],
+  "author": "james",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^5.2.1"
+  }
+}
