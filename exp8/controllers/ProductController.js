@@ -12,9 +12,21 @@ let GetAllProduct = async(req, res)=>{
 
 let GetAllProductById = async(req, res)=>{
     // console.log(req.params);
-    let x = req.params.a;
-    let result = await Product.find({ _id : x});
+    let id = req.params.id;
+    let result = await Product.find({ _id : id});
+    res.send({success:true, result : result});
+}
+let DeleteProductById = async(req, res)=>{
+    let id = req.params.id;
+    let result = await Product.deleteMany({_id : id});
+    res.send({success:true, result : result});
+
+}
+let UpdateProductById = async(req, res)=>{
+    let id = req.params.id;
+    let result = await Product.updateMany({_id : id}, req.body);
     res.send({success:true, result : result});
 }
 
-export {SaveProduct, GetAllProduct, GetAllProductById}
+
+export {SaveProduct, UpdateProductById, GetAllProduct, GetAllProductById, DeleteProductById}

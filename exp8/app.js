@@ -6,5 +6,5 @@ app.use(express.json());
 app.use(express.urlencoded({extended : true}));
 app.use(AllRoutes)
 
-const port = 3000;
+const port = process.env.PORT;
 app.listen(port, ()=>console.log("server running with port ", port));
