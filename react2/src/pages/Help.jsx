@@ -26,3 +26,17 @@ const Help = () => {
 }
 
 export default Help
+
+/*
+
+
+
+let [name, setName] = useState("rohit");
+
+1. setName("aman")
+2. setName(prev=>{
+
+    return "gaurav"
+  })
+
+*/
