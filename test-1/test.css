@@ -1,0 +1,169 @@
+body{
+    margin: 0;
+    padding: 0;
+    background-color: rgb(164, 159, 159);
+    font-family: Arial, Helvetica, sans-serif;
+}
+.header{
+    margin-top: 0;
+    height: 80px;
+    width: 100%;
+    background-color: rgb(255, 0, 0);
+    
+}
+.logo{
+    height: 80px;
+    width: 15%;
+    background-image: url(https://i.pinimg.com/564x/d2/c1/6d/d2c16d99034f9407fd708dfc3356c688.jpg);
+    background-size: 100% 100%;
+}
+.container{
+    margin: 0 auto;
+    width: 85%;
+  
+ 
+}
+.inside-head{
+    float: right;
+    height: 60px;
+    width: 40%;
+
+    padding: 10px;
+
+}
+.inside-head ul{
+    margin: 0;
+    padding: 0;
+    height: 60px;
+    display:flex;
+    list-style: none;
+    justify-content:space-around;
+    align-items: center;
+  
+    
+    
+}
+
+.inside-head ul li a{
+    color: #fff;
+    text-decoration: none;
+    margin: 10px;
+    font-size: 25px;
+    padding: 8px 15px;
+    transition: 1.5s;
+    border-radius: 40px;
+}
+.inside-head ul li a:hover{
+    background-color: black;
+    border-radius: 40px;
+}
+.nav{
+    height: 50px;
+    width: 100%;
+    background-color: rgb(5, 5, 5);
+    padding-top: 10px;
+    padding-bottom: 8px;
+}
+.nav ul{
+    margin: 0;
+    padding: 0;
+    height: 60px;
+    display:flex;
+    list-style: none;
+    justify-content:space-around;
+    align-items: center;
+}
+.nav ul li a{
+    color: #fff;
+     text-decoration: none;
+    margin: 10px;
+    font-size: px;
+    padding: 10px 5px;
+    transition: 1s;
+}
+.nav ul li a:hover{
+    color:  rgb(255, 0, 0);
+}
+.hero{
+    height: 400px;
+    width: 100%;
+   
+    background-image: url(https://static.vecteezy.com/system/resources/thumbnails/008/969/361/small/multi-layers-gray-blue-dark-texture-3d-papercut-layers-in-gradient-banner-abstract-paper-cut-art-background-design-for-website-template-topography-map-concept-or-smooth-origami-paper-cut-vector.jpg);
+    background-size: 100% 100%;
+}
+.content{
+    height: 300px;
+    width: 85%;
+    background-color: #ffffff;
+    display:flex;
+    justify-content: space-around;
+    align-items: center;
+    border-bottom: #000000 solid 1px;
+}
+.setting{
+    height:100px ;
+    width: 120px;
+    background-color:rgb(0, 0, 0);;
+    margin: 10px;
+    color: #fff;
+    font-size: 30px;
+    text-align: center;
+    padding-top: 20px;
+    
+    
+
+}
+.product{
+    height:100px ;
+    width: 120px;
+    background-color: rgb(0, 0, 0);
+    margin: 10px;
+     color: #fff;
+    font-size: 30px;
+    text-align: center;
+    padding-top: 20px;
+}
+.info{
+    height:100px ;
+    width: 120px;
+    background-color: rgb(0, 0, 0);
+    margin: 10px;
+    color: #fff;
+    font-size: 30px;
+    text-align: center;
+    padding-top: 20px;
+}
+
+.item{
+ height: 300px;
+    width: 85%;
+    background-color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+.goods{
+    height: 190px;
+    width: 95px;
+    margin: 7px;
+    background-color: #000000;
+    text-align: center;
+    text-decoration: underline;
+    font-size: 14px;
+    color: #fff ;
+    border:#000000  solid 1px;
+}
+.goods .img{
+    width: 95px;
+    height: 150px;
+    background-image: url(https://m.media-amazon.com/images/I/611mRs-imxL._AC_UF1000,1000_QL80_.jpg);
+    background-size: 100% 100%;
+    
+}
+.footer{
+    height:27px;
+    width: 100%;
+    background-color: black;
+    color: #fff;
+    text-align: center;
+}

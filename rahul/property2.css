@@ -1,0 +1,30 @@
+body{
+    background-color: #960ACD;
+    margin: 0;
+    padding: 0;
+}
+.header{
+    height: 150px;
+    width: 100%;
+    background-color: gray;
+}
+.login-btn{
+    background-color: #000;
+    border : none;
+    color: #fff;
+    margin: 20px;
+    padding: 15px 30px;
+    /*       t/b   l/r    */
+    font-size: 20px;
+    border-radius: 15px;
+    transition: .5s;
+}
+.login-btn:hover{
+    background-color: #478596;
+}
+/* 
+        px   (all side)
+        px  px  (t/b    l/r)
+
+        px px px px   (t  r  b  l)
+*/

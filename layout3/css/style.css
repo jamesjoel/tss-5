@@ -1,0 +1,44 @@
+.bg-green {
+    background-color: #3B5D50;
+}
+
+.logo {
+    font-size: 35px;
+}
+
+.logo span {
+    color: gray;
+}
+
+#menu .nav .nav-item .nav-link:hover {
+    color: #fff;
+}
+
+.slider {
+    min-height: 500px;
+    background-color: #3B5D50;
+}
+
+.btn-yellow {
+    background-color: #F8B810;
+    border-radius: 30px;
+    color: #3B5D50;
+}
+
+.slider-right {
+    height: 100%;
+    width: 100%;
+    background-image: url("https://themewagon.github.io/furni/images/couch.png");
+    background-size: 100% 100%;
+}
+.btn-black{
+    background-color: #2F2F2F;
+    color: #fff;
+}
+.btn-black:hover{
+    background-color: #3B5D50;
+    color: #fff;
+}
+.border-radius{
+    border-radius: 20px;
+}

@@ -1,0 +1,267 @@
+body{
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+.container{
+    margin: 0 auto;
+    width: 80%;
+}
+.top-header{
+    width: 100%;
+    height: 50px;
+    
+
+}
+.inside-top-header{
+    background-color: #81C408;
+    width: 100%;
+    height: 50px;
+    border-radius: 30px 10px 30px 10px;
+    
+    display: flex;
+    justify-content: space-between;
+}
+.left-top-header{
+    width: 35%;
+    /* background-color: pink; */
+    height: 50px;
+}
+.left-top-header ul, .right-top-header ul{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    height: 50px;
+}
+.left-top-header ul li a, .right-top-header ul li a{
+    text-decoration: none;
+    font-size: 13px;
+    color: #fff;
+}
+.right-top-header{
+width: 30%;
+height: 50px;
+/* background-color: yellow; */
+}
+
+.header{
+    width: 100%;
+    height: 100px;
+    position: sticky;
+    top: 0px;
+    background-color: #fff;
+    box-shadow: 0px 5px 10px #ccc;
+}
+.inside-header{
+    display: flex;
+    height: 100px;
+    /* background-color: red; */
+    
+    
+}
+.logo{
+    width: 20%;
+    height: 100px;
+    /* background-color: yellow; */
+    display: flex;
+    align-items: center;
+}
+.logo h1{
+    color: #81C408;
+    font-size: 35px;
+}
+.nav{
+    width: 60%;
+    height: 100px;
+    /* background-color: green; */
+}
+.nav ul{
+    margin: 0 auto;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    height: 100px;
+    width: 60%;
+    align-items: center;
+    justify-content: space-between;
+}
+.nav ul li a{
+    text-decoration: none;
+    color: #878686;
+    font-size: 14px;
+}
+.nav ul li a:hover{
+    color: #81C408;
+}
+.login{
+    width: 20%;
+    height: 100px;
+    /* background-color: red; */
+}
+
+.slider{
+    width: 100%;
+    height: 400px;
+    background-color: orange;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.left-slider{
+    width: 50%;
+    height: 250px;
+    /* background-color: red; */
+}
+.left-slider h4{
+    color: #fff;
+}
+.left-slider h1{
+    color: #fff;
+    font-size: 45px;
+}
+.left-slider input{
+    width: 350px;
+    height: 35px;
+    border-radius: 50px;
+    border: none;
+    padding: 10px;
+}
+.right-slider{
+    width: 40%;
+    height: 250px;
+    background-image: url("https://themewagon.github.io/fruitables/img/hero-img-2.jpg");
+    background-size:  100% 100%;
+    border-radius: 20px;
+    box-shadow: 0 0 20px #000;
+}
+.hero{
+    width: 100%;
+    height: 300px;
+    /* background-color: green; */
+}
+.inside-hero{
+    width: 100%;
+    height: 300px;
+    /* background-color: red; */
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.hero-card{
+    width: 22%;
+    height: 200px;
+    border-radius: 20px;
+    background-color: #e9e5e5;
+}
+.hero-card-top{
+    display: flex;
+    justify-content: center;
+    margin-top: 25px;
+}
+.hero-card-top-inside{
+    background-color: orange;
+    height: 100px;
+    width: 100px;
+    border-radius: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+}
+.hero-card-bottom h3{
+    margin-bottom: 0;
+    padding-bottom: 0;
+    text-align: center;
+    color: #878686;
+}
+.hero-card-bottom p{
+    margin-top: 5px;
+    color: #878686;
+    font-size: 14px;
+    text-align: center;
+}
+.products{
+    width: 100%;
+    min-height: 800px;
+    /* background-color: gray; */
+}
+.products h1{
+    color: #878686;
+}
+.products-item{
+    min-height: 800px;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+.products-card{
+    width: 23%;
+    height: 300px;
+    /* background-color: red; */
+    transition: .5s;
+    border-radius: 10px;
+}
+.products-card-top, .products-card-bottom{
+    height: 150px;
+    width: 100%;
+}
+.products-card-bottom h3, .products-card-bottom p{
+    text-align: center;
+    color: #878686;
+}
+.products-card-bottom div{
+    text-align: right;
+}
+.products-card-bottom a{
+    
+    text-decoration: none;
+    padding: 10px 20px;
+    margin: 5px;
+    border-radius: 20px;
+    font-size: 14px;
+    color: #81C408;
+    border:1px solid orange;
+    transition: .5s;
+}
+.products-card-bottom a:hover{
+    color: #fff;
+    background-color: orange;
+}
+
+.products-card-top{
+    border-radius: 10px 10px 0 0;
+    background-image: url("https://themewagon.github.io/fruitables/img/fruite-item-2.jpg");
+    background-size: 100% 100%;
+    transition: .5s;
+}
+.products-card-top:hover{
+    background-size: 120% 120%;
+}
+.products-card:hover{
+    box-shadow: 0 0 20px #000;
+}
+
+.fresh-fruit{
+    width: 100%;
+    height: 400px;
+    background-color: yellow;
+}
+.bestseller{
+    width: 100%;
+    height: 400px;
+    background-color: black;
+}
+.reviews{
+    width: 100%;
+    background-color: blue;
+    height: 200px;
+}
+.footer{
+    width: 100%;
+    height: 450px;
+    background-color: green;
+}
