@@ -2,9 +2,11 @@ import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import {useFormik} from 'formik'
 import {useNavigate} from 'react-router-dom'
+import {ToastContainer, toast} from 'react-toastify'
 
 
 const Signup = () => {
+    let [loader, setLoader] = useState(false)
     let navigate = useNavigate();
     let SignupForm = useFormik({
         initialValues : {
@@ -19,10 +21,18 @@ const Signup = () => {
             repassword : ""
         },
         onSubmit : (formData)=>{
+            setLoader(true)
+            
+            // console.log(formData)
+            
             axios
             .post("http://localhost:3000/api/v1/user", formData)
             .then(response=>{
-                navigate("/login");
+                setLoader(false)
+                toast("You Are Succeses Full Signup !", {
+                    onClose : ()=>navigate("/login")
+                });
+                
             })
         }
     })
@@ -41,6 +51,8 @@ const Signup = () => {
 
 
   return (
+    <>
+    <ToastContainer autoClose={3000} theme="dark" />
     <div className="container my-5" style={{minHeight : 750}}>
             <form onSubmit={SignupForm.handleSubmit}>
         <div className="row">
@@ -101,13 +113,23 @@ const Signup = () => {
                         </div>
                     </div>
                     <div className="card-footer bg-yellow">
-                        <button type='submit' className='btn btn-dark'>Signup</button>
+                        <button type='submit' className='btn btn-dark'>
+                        Signup &nbsp;
+                        { 
+                        loader 
+                        ? 
+                        <span className='spinner-border spinner-border-sm'></span>
+                        :
+                        ''
+                        }
+                        </button>
                     </div>
                 </div>
             </div>
         </div>
             </form>
     </div>
+    </>
   )
 }
 
