@@ -4,11 +4,24 @@ import {useFormik} from 'formik'
 import {useNavigate} from 'react-router-dom'
 import {ToastContainer, toast} from 'react-toastify'
 
+import * as YUP from 'yup'
 
+let SignupSchema = YUP.object({
+    fullname : YUP.string().required("Insert Your Full Name"),
+    username : YUP.string().required("Insert Your Username"),
+    email : YUP.string().required("Insert Your E-Mail Id"),
+    password : YUP.string().required("Insert Your Password"),
+    repassword : YUP.string().required("Insert Your Re-Password"),
+    city : YUP.string().required("Select Your City"),
+    contact : YUP.string().required("Insert Your Contact Number"),
+    address : YUP.string().required("Insert Your Full Address"),
+    gender : YUP.string().required("Select Your Gender"),
+})
 const Signup = () => {
     let [loader, setLoader] = useState(false)
     let navigate = useNavigate();
     let SignupForm = useFormik({
+        validationSchema : SignupSchema,
         initialValues : {
             fullname : "",
             email : "",
@@ -21,12 +34,16 @@ const Signup = () => {
             repassword : ""
         },
         onSubmit : (formData)=>{
+            console.log(formData)
+            return;
+
             setLoader(true)
             
             // console.log(formData)
             
             axios
-            .post("http://localhost:3000/api/v1/user", formData)
+            // .post(import.meta.env.VITE_API_URL+"/user", formData)
+            .post(`${import.meta.env.VITE_API_URL}/user`, formData)
             .then(response=>{
                 setLoader(false)
                 toast("You Are Succeses Full Signup !", {
@@ -42,9 +59,8 @@ const Signup = () => {
 
     useEffect(()=>{
         axios
-        .get("http://localhost:3000/api/v1/city")
+        .get(`${import.meta.env.VITE_API_URL}/city`)
         .then(response=>{
-            // console.log(response.data)
             setCity(response.data.result)
         })
     },[])
@@ -64,35 +80,84 @@ const Signup = () => {
                     <div className="card-body">
                         <div className='my-2'>
                             <label>Full Name</label>
-                            <input type='text' name='fullname' onChange={SignupForm.handleChange} placeholder='Full Name' className='form-control' />
+                            <input type='text' name='fullname' onChange={SignupForm.handleChange} placeholder='Full Name' className={'form-control '+ (SignupForm.errors.fullname && SignupForm.touched.fullname ? 'is-invalid' : '')} />
+                            {
+                                SignupForm.errors.fullname && SignupForm.touched.fullname                                
+                                ?
+                                <small className='text-danger'>{SignupForm.errors.fullname}</small>
+                                :
+                                ''
+                            }
                         </div>
                         <div className='my-2'>
                             <label>Username</label>
-                            <input type='text' name='username' onChange={SignupForm.handleChange} placeholder='Username' className='form-control' />
+                            <input type='text' name='username' onChange={SignupForm.handleChange} placeholder='Username' className={'form-control '+ (SignupForm.errors.username && SignupForm.touched.username ? 'is-invalid' : '')} />
+                            {
+                                SignupForm.errors.username && SignupForm.touched.username                                
+                                ?
+                                <small className='text-danger'>{SignupForm.errors.username}</small>
+                                :
+                                ''
+                            }
                         </div>
                         <div className='my-2'>
                             <label>Email</label>
-                            <input type='text' name='email' onChange={SignupForm.handleChange} placeholder='Email' className='form-control' />
+                            <input type='text' name='email' onChange={SignupForm.handleChange} placeholder='Email' className={'form-control '+(SignupForm.errors.email && SignupForm.touched.email ? 'is-invalid' : '')} />
+                            {
+                                SignupForm.errors.email && SignupForm.touched.email
+                                ?
+                                <small className='text-danger'>{SignupForm.errors.email}</small>
+                                :
+                                ''
+                            }
                         </div>
                         <div className='my-2'>
                             <label>Password</label>
-                            <input type='password' name='password' onChange={SignupForm.handleChange} placeholder='Password' className='form-control' />
+                            <input type='password' name='password' onChange={SignupForm.handleChange} placeholder='Password' className={'form-control '+ (SignupForm.errors.password && SignupForm.touched.password ? 'is-invalid' : '')} />
+                            {
+                                SignupForm.errors.password && SignupForm.touched.password                                
+                                ?
+                                <small className='text-danger'>{SignupForm.errors.password}</small>
+                                :
+                                ''
+                            }
                         </div>
                         <div className='my-2'>
                             <label>Re-Password</label>
-                            <input type='password' name='repassword' onChange={SignupForm.handleChange} placeholder='Re-Password' className='form-control' />
+                            <input type='password' name='repassword' onChange={SignupForm.handleChange} placeholder='Re-Password' className={'form-control '+ (SignupForm.errors.repassword && SignupForm.touched.repassword ? 'is-invalid' : '')} />
+                            {
+                                SignupForm.errors.repassword && SignupForm.touched.repassword                                
+                                ?
+                                <small className='text-danger'>{SignupForm.errors.repassword}</small>
+                                :
+                                ''
+                            }
                         </div>
                         <div className='my-2'>
                             <label>Contact</label>
-                            <input type='text' name='contact' onChange={SignupForm.handleChange} placeholder='Contact' className='form-control' />
+                            <input type='text' name='contact' onChange={SignupForm.handleChange} placeholder='Contact' className={'form-control '+ (SignupForm.errors.contact && SignupForm.touched.contact ? 'is-invalid' : '')} />
+                            {
+                                SignupForm.errors.contact && SignupForm.touched.contact                                
+                                ?
+                                <small className='text-danger'>{SignupForm.errors.contact}</small>
+                                :
+                                ''
+                            }
                         </div>
                         <div className='my-2'>
                             <label>Address</label>
-                            <textarea name='address' onChange={SignupForm.handleChange} placeholder='Address' className='form-control'></textarea>
+                            <textarea name='address' onChange={SignupForm.handleChange} placeholder='Address' className={'form-control '+ (SignupForm.errors.address && SignupForm.touched.address ? 'is-invalid' : '')}></textarea>
+                            {
+                                SignupForm.errors.address && SignupForm.touched.address                                
+                                ?
+                                <small className='text-danger'>{SignupForm.errors.address}</small>
+                                :
+                                ''
+                            }
                         </div>
                         <div className='my-2'>
                             <label>City</label>
-                            <select name='city' onChange={SignupForm.handleChange} className='form-control'>
+                            <select name='city' onChange={SignupForm.handleChange} className={'form-control '+ (SignupForm.errors.city && SignupForm.touched.city ? 'is-invalid' : '')}>
                               <option>Select</option>
                               {
                                 city.map(item=>{
@@ -103,6 +168,13 @@ const Signup = () => {
                               }
                               
                             </select>
+                            {
+                                SignupForm.errors.city && SignupForm.touched.city                                
+                                ?
+                                <small className='text-danger'>{SignupForm.errors.city}</small>
+                                :
+                                ''
+                            }
                         </div>
                         <div className="my-3">
                           <label>Gender</label>
@@ -110,6 +182,14 @@ const Signup = () => {
                           Male <input type='radio' value="male" name='gender' onChange={SignupForm.handleChange}/>
                           &nbsp;&nbsp;&nbsp;
                           Female <input type='radio' value="female" name='gender' onChange={SignupForm.handleChange}/>
+                          <br />
+                          {
+                                SignupForm.errors.gender && SignupForm.touched.gender                                
+                                ?
+                                <small className='text-danger'>{SignupForm.errors.gender}</small>
+                                :
+                                ''
+                            }
                         </div>
                     </div>
                     <div className="card-footer bg-yellow">
