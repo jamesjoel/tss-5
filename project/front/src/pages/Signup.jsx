@@ -3,20 +3,8 @@ import axios from 'axios'
 import {useFormik} from 'formik'
 import {useNavigate} from 'react-router-dom'
 import {ToastContainer, toast} from 'react-toastify'
+import SignupSchema from '../schema/SignupSchema'
 
-import * as YUP from 'yup'
-
-let SignupSchema = YUP.object({
-    fullname : YUP.string().required("Insert Your Full Name"),
-    username : YUP.string().required("Insert Your Username"),
-    email : YUP.string().required("Insert Your E-Mail Id"),
-    password : YUP.string().required("Insert Your Password"),
-    repassword : YUP.string().required("Insert Your Re-Password"),
-    city : YUP.string().required("Select Your City"),
-    contact : YUP.string().required("Insert Your Contact Number"),
-    address : YUP.string().required("Insert Your Full Address"),
-    gender : YUP.string().required("Select Your Gender"),
-})
 const Signup = () => {
     let [loader, setLoader] = useState(false)
     let navigate = useNavigate();
@@ -135,7 +123,11 @@ const Signup = () => {
                         </div>
                         <div className='my-2'>
                             <label>Contact</label>
+                            {/* <div className='input-group'> */}
+                            {/* <label class="input-group-text" for="inputGroupFile01">+91</label> */}
                             <input type='text' name='contact' onChange={SignupForm.handleChange} placeholder='Contact' className={'form-control '+ (SignupForm.errors.contact && SignupForm.touched.contact ? 'is-invalid' : '')} />
+                            {/* </div> */}
+
                             {
                                 SignupForm.errors.contact && SignupForm.touched.contact                                
                                 ?
