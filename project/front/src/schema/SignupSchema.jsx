@@ -17,7 +17,18 @@ let SignupSchema = YUP.object({
     .email("Email Id is Invalid")
     //http://localhost:3000/api/v1/user/username-exists/james
     .required("Insert Your E-Mail Id"),
-    password : YUP.string().required("Insert Your Password"),
+    password : 
+        YUP
+        .string()
+        .required("Insert Your Password")
+        .test("strongpass", "Strong Password", (value)=>{
+            let reg = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*]).{8,}$/;
+            if(!value) return true;
+            if(reg.test(value)==true)
+                return true;
+            else
+                return false;
+        }),
     repassword : YUP.string().oneOf([YUP.ref("password")], "Password and Re-Password should be same").required("Insert Your Re-Password"),
     city : YUP.string().required("Select Your City"),
     contact : YUP.number().typeError("Invalid Contact Number").min(1000000000, "Contact Number should be 10 digit").max(9999999999, "Contact Number should be 10 digit").required("Insert Your Contact Number"),

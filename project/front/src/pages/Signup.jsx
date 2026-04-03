@@ -7,6 +7,8 @@ import SignupSchema from '../schema/SignupSchema'
 
 const Signup = () => {
     let [loader, setLoader] = useState(false)
+    let [pwdType, setPwdType] = useState("password") 
+
     let navigate = useNavigate();
     let SignupForm = useFormik({
         validationSchema : SignupSchema,
@@ -22,8 +24,7 @@ const Signup = () => {
             repassword : ""
         },
         onSubmit : (formData)=>{
-            console.log(formData)
-            return;
+            
 
             setLoader(true)
             
@@ -53,10 +54,17 @@ const Signup = () => {
         })
     },[])
 
+    let changePwdType = ()=>{
+        if(pwdType=="password")
+            setPwdType("text")
+        else
+            setPwdType("password")
+    }
+
 
   return (
     <>
-    <ToastContainer autoClose={3000} theme="dark" />
+    <ToastContainer autoClose={1000} theme="dark" />
     <div className="container my-5" style={{minHeight : 750}}>
             <form onSubmit={SignupForm.handleSubmit}>
         <div className="row">
@@ -101,7 +109,22 @@ const Signup = () => {
                         </div>
                         <div className='my-2'>
                             <label>Password</label>
-                            <input type='password' name='password' onChange={SignupForm.handleChange} placeholder='Password' className={'form-control '+ (SignupForm.errors.password && SignupForm.touched.password ? 'is-invalid' : '')} />
+                            <div className='input-group'>
+
+                            <input type={pwdType} name='password' onChange={SignupForm.handleChange} placeholder='Password' className={'form-control '+ (SignupForm.errors.password && SignupForm.touched.password ? 'is-invalid' : '')} />
+                            <div class="input-group-append">
+
+                            <button type='button' onClick={changePwdType} className='btn btn-outline-dark'>
+                                {
+                                    pwdType=="password"
+                                    ?
+                                    <i class="fa fa-eye" aria-hidden="true"></i>
+                                    :
+                                    <i class="fa fa-eye-slash" aria-hidden="true"></i>
+                                }
+                            </button>
+                            </div>
+                            </div>
                             {
                                 SignupForm.errors.password && SignupForm.touched.password                                
                                 ?
