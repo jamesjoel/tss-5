@@ -1,27 +1,20 @@
 import React, { useState } from 'react'
 
 const Help = () => {
-  let [num, setNum] = useState(10);
-  let demo = ()=>{
-    // setNum(20)
-    setNum(prev=>prev+10)
-  }
+  let [x, setX] = useState(100);
+  let [y, setY] = useState(100);
 
-  let demo2 = ()=>{
-    setNum(prev=>prev-10)
+  let demo1 = ()=>{
+    setX(prev=>prev+1);
+    setY(prev=>prev+1);
   }
+  let demo2 = ()=>{
+    setX(100)
+    setY(100)
+  }
+  
   return (
-    <div className="container my-4">
-      <div className="row">
-        <div className="col-md-12">
-          <button style={{ width : num+"px"}} onClick={demo} className='btn btn-info btn-lg'>{num}</button>
-          <br />
-          <br />
-          <button onClick={demo2} className='btn btn-danger btn-lg'>{num}</button>
-          {/* <h1>{num}</h1> */}
-        </div>
-      </div>
-    </div>
+    <div onMouseOut={demo2} onMouseMove={demo1} style={{height : x, width : y, backgroundColor : "red"}}></div>  
   )
 }
 
