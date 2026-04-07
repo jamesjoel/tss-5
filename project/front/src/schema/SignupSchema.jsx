@@ -16,14 +16,7 @@ let SignupSchema = YUP.object({
     .string()
     //http://localhost:3000/api/v1/user/username-exists/james
     .required("Insert Your E-Mail Id")
-    .email("hakwa")
-    .test("checkemail", "This Username already exists !",async(e)=>{
-        if(!e) return true;
-        let response = await axios.get(`${import.meta.env.VITE_API_URL}/user/email-exists/${(e)}`)
-        console.log(response.data)
-        return response.data.success
-    }),
-  
+    .email("Invalid email id"),
     password : 
         YUP
         .string()

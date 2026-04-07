@@ -26,16 +26,11 @@ let UsernameExists = async(req, res)=>{
         res.send({success:false})
     }
 }
-let EmailExists = async(req, res)=>{
-    let e = req.params.e;
-    let result = await User.find({email : e }); // []
-    if(result.length==0){
-        res.send({success:true})
-    }else{
-        
-        res.send({success:false})
-    }
+
+
+let DeleteAllUser = async(req, res)=>{
+    let result = await User.deleteMany();
+    res.send({success:true, msg : "all user deleted"})
 }
 
-
-export {SaveUser, GetAllUser, UsernameExists,EmailExists}
+export {SaveUser, GetAllUser, UsernameExists}
