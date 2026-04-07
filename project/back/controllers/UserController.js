@@ -26,6 +26,16 @@ let UsernameExists = async(req, res)=>{
         res.send({success:false})
     }
 }
+let EmailExists = async(req, res)=>{
+    let e = req.params.e;
+    let result = await User.find({email : e }); // []
+    if(result.length==0){
+        res.send({success:true})
+    }else{
+        
+        res.send({success:false})
+    }
+}
 
 
-export {SaveUser, GetAllUser, UsernameExists}
+export {SaveUser, GetAllUser, UsernameExists,EmailExists}
