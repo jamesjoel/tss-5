@@ -14,9 +14,9 @@ let SignupSchema = YUP.object({
     }),
     email : YUP
     .string()
-    .email("Email Id is Invalid")
     //http://localhost:3000/api/v1/user/username-exists/james
-    .required("Insert Your E-Mail Id"),
+    .required("Insert Your E-Mail Id")
+    .email("Invalid email id"),
     password : 
         YUP
         .string()

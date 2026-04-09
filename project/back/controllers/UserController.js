@@ -27,9 +27,10 @@ let UsernameExists = async(req, res)=>{
     }
 }
 
+
 let DeleteAllUser = async(req, res)=>{
     let result = await User.deleteMany();
     res.send({success:true, msg : "all user deleted"})
 }
 
-export {SaveUser, GetAllUser, UsernameExists, DeleteAllUser}
+export {SaveUser, GetAllUser, UsernameExists}
