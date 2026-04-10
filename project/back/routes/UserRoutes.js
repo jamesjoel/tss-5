@@ -1,5 +1,5 @@
 import express from 'express'
-import { GetAllUser, SaveUser, UsernameExists} from '../controllers/UserController.js'
+import { GetAllUser, SaveUser, UsernameExists, DeleteAllUser} from '../controllers/UserController.js'
 
 let routes = express.Router();
 

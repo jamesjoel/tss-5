@@ -33,4 +33,4 @@ let DeleteAllUser = async(req, res)=>{
     res.send({success:true, msg : "all user deleted"})
 }
 
-export {SaveUser, GetAllUser, UsernameExists}
+export {SaveUser, GetAllUser, UsernameExists, DeleteAllUser}

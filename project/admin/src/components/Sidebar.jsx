@@ -23,8 +23,8 @@ const Sidebar = () => {
                     <div className="nav-item dropdown">
                         <a href="#" className="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i className="fa fa-laptop me-2"></i>Ammunities</a>
                         <div className="dropdown-menu bg-transparent border-0">
-                            <NavLink to="/hotels" className="dropdown-item">Add</NavLink>
-                            <NavLink to="/hotels/list" className="dropdown-item">List</NavLink>
+                            <NavLink to="/amenities/add" className="dropdown-item">Add</NavLink>
+                            <NavLink to="/amenities" className="dropdown-item">List</NavLink>
                             
                         </div>
                     </div>
@@ -39,8 +39,8 @@ const Sidebar = () => {
                     <div className="nav-item dropdown">
                         <a href="#" className="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i className="fa fa-laptop me-2"></i>Hotels</a>
                         <div className="dropdown-menu bg-transparent border-0">
-                            <NavLink to="/hotels" className="dropdown-item">Add</NavLink>
-                            <NavLink to="/hotels/list" className="dropdown-item">List</NavLink>
+                            <NavLink to="/hotels/add" className="dropdown-item">Add</NavLink>
+                            <NavLink to="/hotels" className="dropdown-item">List</NavLink>
                             
                         </div>
                     </div>
