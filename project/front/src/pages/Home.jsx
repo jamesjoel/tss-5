@@ -2,8 +2,21 @@ import React from 'react'
 import Popular from '../components/Popular'
 import Slider from '../components/Slider'
 import {NavLink} from 'react-router-dom'
-
+import { useState } from 'react'
+import { useEffect } from 'react'
+import axios from 'axios'
+import useShowDesc from '../hooks/useShowDesc'
 const Home = () => {
+  let [allHotel, setAllHotel] = useState([])
+  useEffect(()=>{
+    axios
+    .get(`${import.meta.env.VITE_API_URL}/hotel`)
+    .then(response=>{
+      setAllHotel(response.data.result);
+    })
+  },[])
+
+
   return (
     <>
     <Slider />
@@ -24,8 +37,12 @@ const Home = () => {
       </ul>
 
       <div className="filters-content">
-        <div className="row grid">
-          <div className="col-sm-6 col-lg-4 all pizza">
+        <div className="row">
+          {
+            allHotel.map(item=>{
+              return(
+                <>
+                <div className="col-sm-6 col-lg-4 all pizza">
             <div className="box">
               <div>
                 <div className="img-box">
@@ -33,14 +50,14 @@ const Home = () => {
                 </div>
                 <div className="detail-box">
                   <h5>
-                    Delicious Pizza
+                    {item.name}
                   </h5>
                   <p>
-                    Veniam debitis quaerat officiis quasi cupiditate quo, quisquam velit, magnam voluptatem repellendus sed eaque
+                    {useShowDesc(item.desc)}
                   </p>
                   <div className="options">
                     <h6>
-                      $20
+                      &#8377; {item.cost}
                     </h6>
                     <NavLink to="/detail" className='btn btn-link'>More</NavLink>
                   </div>
@@ -48,13 +65,17 @@ const Home = () => {
               </div>
             </div>
           </div>
+                </>
+              )
+            })
+          }
           
         </div>
       </div>
       <div className="btn-box">
-        <a href="">
+        <NavLink to="/view-all">
           View More
-        </a>
+        </NavLink>
       </div>
     </div>
   </section>

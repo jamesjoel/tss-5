@@ -26,4 +26,9 @@ let DelteHotel = async(req, res)=>{
     res.send({success:true, result:result})
 }
 
-export {SaveHotel, UpdateHotel, DelteHotel, GetAllHotel, GetHotelById}
+let DeleteAll = async(req, res)=>{
+    await Hotel.deleteMany();
+    res.send({msg : "Delete All"})
+}
+
+export {SaveHotel, UpdateHotel, DelteHotel, GetAllHotel, GetHotelById, DeleteAll}
