@@ -1,4 +1,5 @@
 import Amenities from "../models/Amenities.js";
+import Hotel from '../models/Hotels.js'
 
 let SaveAmenities = async(req, res)=>{
     let result= await Amenities.create(req.body);
@@ -21,6 +22,11 @@ let UpdateAmenities = async(req, res)=>{
 let DelteAmenities = async(req, res)=>{
     let id = req.params.id;
     let result= await Amenities.deleteMany({_id : id});
+
+    let hotelResult = await Hotel.find({ amenitiesId : {$in : [id]} })
+    
+
+
     res.send({success:true, result:result})
 }
 
