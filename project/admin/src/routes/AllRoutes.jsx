@@ -15,6 +15,7 @@ const AllRoutes = () => {
         <Route path='/cuisine/add' element={<AddCuisine />} />
         <Route path='/amenities' element={<ListAmenities />} />
         <Route path='/amenities/add' element={<AddAmenities />} />
+        <Route path='/amenities/edit/:id' element={<AddAmenities />} />
         <Route path='/hotels' element={<ListHotels />} />
         <Route path='/hotels/add' element={<AddHotels />} />
     </Routes>

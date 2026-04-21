@@ -22,11 +22,8 @@ let UpdateAmenities = async(req, res)=>{
 let DelteAmenities = async(req, res)=>{
     let id = req.params.id;
     let result= await Amenities.deleteMany({_id : id});
-
-    let hotelResult = await Hotel.find({ amenitiesId : {$in : [id]} })
+    let hotelResult = await Hotel.updateMany({ amenitiesId : {$in : [id]} },  { $pull: { amenitiesId: id } })
     
-
-
     res.send({success:true, result:result})
 }
 
