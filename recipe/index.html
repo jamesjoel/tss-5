@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI-Culinara | Smart Recipes</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <nav class="glass-nav">
+    <div class="nav-content">
+        <div class="nav-logo">
+            <span class="logo-icon">✨</span>
+            <span class="logo-text">Culinara<span>AI</span></span>
+        </div>
+        <ul class="nav-links">
+            <li><a href="#" class="active">Dashboard</a></li>
+            <li><a href="#">Cookbook</a></li>
+            <li><a href="#">My Fridge</a></li>
+        </ul>
+        <div class="nav-auth">
+            <button class="btn-login">Login</button>
+            <button class="btn-signup">Get Started</button>
+        </div>
+    </div>
+</nav>
+    <div class="blob-bg"></div>
+
+    <main class="glass-container" id="app-container">
+        <section id="page-input">
+            <header>
+                <span class="badge">AI Recipe Engine</span>
+                <h1>What's in your <span>kitchen?</span></h1>
+                <p>Select your ingredients and our AI will craft the perfect dish.</p>
+            </header>
+
+            <div class="ingredient-grid">
+                <label class="chip">
+                    <input type="checkbox" value="Tomato">
+                    <span>🍅 Tomato</span>
+                </label>
+                <label class="chip">
+                    <input type="checkbox" value="Chicken">
+                    <span>🍗 Chicken</span>
+                </label>
+                <label class="chip">
+                    <input type="checkbox" value="Pasta">
+                    <span>🍝 Pasta</span>
+                </label>
+                <label class="chip">
+                    <input type="checkbox" value="Garlic">
+                    <span>🧄 Garlic</span>
+                </label>
+                <label class="chip">
+                    <input type="checkbox" value="Mushrooms">
+                    <span>🍄 Mushrooms</span>
+                </label>
+                <label class="chip">
+                    <input type="checkbox" value="Spinach">
+                    <span>🍃 Spinach</span>
+                </label>
+                <label class="chip">
+                    <input type="checkbox" value="Cheese">
+                    <span>🧀 Cheese</span>
+                </label>
+            </div>
+
+            <button class="generate-btn" onclick="generateRecipe()">
+                Generate Magic ✨
+            </button>
+        </section>
+
+        <section id="page-result" class="hidden">
+            <button class="back-btn" onclick="showInput()">← Back to Pantry</button>
+            <div class="recipe-card">
+                <div class="recipe-header">
+                    <h2 id="recipe-title">Gourmet Creation</h2>
+                    <div class="meta">
+                        <span>⏱ 25 Mins</span>
+                        <span>🔥 High Protein</span>
+                    </div>
+                </div>
+                <hr>
+                <div class="recipe-body">
+                    <h3>Instructions</h3>
+                    <p id="recipe-text">Calculating the best flavor combinations...</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        function generateRecipe() {
+            const checked = document.querySelectorAll('input[type="checkbox"]:checked');
+            if (checked.length === 0) {
+                alert("Please select at least one ingredient!");
+                return;
+            }
+
+            const ingredients = Array.from(checked).map(c => c.value).join(", ");
+            
+            // Switch UI
+            document.getElementById('page-input').classList.add('hidden');
+            document.getElementById('page-result').classList.remove('hidden');
+            
+            // Simulate AI "Thinking"
+            document.getElementById('recipe-title').innerText = "AI is cooking...";
+            setTimeout(() => {
+                document.getElementById('recipe-title').innerText = "Chef's Special " + checked[0].value + " Medley";
+                document.getElementById('recipe-text').innerHTML = `Using your <b>${ingredients}</b>, we recommend a slow-sear technique. Sauté the aromatics, incorporate the base, and garnish with fresh herbs for a restaurant-quality finish.`;
+            }, 1500);
+        }
+
+        function showInput() {
+            document.getElementById('page-input').classList.remove('hidden');
+            document.getElementById('page-result').classList.add('hidden');
+        }
+    </script>
+</body>
+</html>

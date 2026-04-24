@@ -1,20 +1,115 @@
 import React from 'react'
-
+import { useState } from 'react';
+import { useEffect } from 'react';
+import {useParams} from 'react-router-dom'
+import axios from 'axios'
+import './Detail.css'
 const Detail = () => {
+
+    let [hotel, setHotel] = useState({})
+
+    let [starArr, setStarArr] = useState([
+        {
+            cls : "fa-star-o"
+        },
+        {
+            cls : "fa-star-o"
+        },
+        {
+            cls : "fa-star-o"
+        },
+        {
+            cls : "fa-star-o"
+        },
+        {
+            cls : "fa-star-o"
+        }
+
+    ])
+
+    let param = useParams();
+
+    useEffect(()=>{
+        if(param.id){
+
+            axios
+            .get(`${import.meta.env.VITE_API_URL}/hotel/${param.id}`)
+            .then(response=>{
+                setHotel(response.data.result)
+            })
+        }
+    },[])
+
+
+    let mouseOverHandler = (item, index)=>{
+        setStarArr(prev=>{
+           return prev.map((ite, ind)=>{
+                if(ind <= index){
+                    return { cls : "fa fa-star"}
+                }else{
+                    return ite;
+                }
+            })
+        })
+        
+    }
+    let mouseOutHandler = (item, index)=>{
+        setStarArr([
+        {
+            cls : "fa-star-o"
+        },
+        {
+            cls : "fa-star-o"
+        },
+        {
+            cls : "fa-star-o"
+        },
+        {
+            cls : "fa-star-o"
+        },
+        {
+            cls : "fa-star-o"
+        }
+
+    ])        
+    }
+
     return (
         <div className="container my-5" style={{ minHeight: 750 }}>
             <div className="row">
                 <div className="col-md-8">
                     <div className="card p-2 border-0">
-                        <div className='d-flex'>
-                            <button className='order_online m-2'><i class="fa fa-star-o" aria-hidden="true"></i> Review</button>
-                            <button className='order_online m-2'><i class="fa fa-bookmark-o" aria-hidden="true"></i> Save</button>
-                        </div>
+                        
                         <div className='p-2'>
+                            <h3 className='mt-3'>{hotel.name}</h3>
                             <img style={{width : "100%", height : 400}} src='https://sayajihotels.com/images/hotels/Sayaji%20Indore/banquet/Pearl%20(1).webp' />
-                            <h3 className='mt-3'>Hotel Sayaji</h3>
-                            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Cum tempora, accusantium in officiis ea veniam corrupti velit cumque quas doloribus autem, nulla nostrum esse reprehenderit dicta saepe totam odit veritatis.</p>
-                            <p><i class="fa fa-map-marker" aria-hidden="true"></i> Lorem ipsum dolor, sit amet consectetur adipisicing elit. Rem, voluptas.</p>
+                        <div className='d-flex'>
+                            <button data-toggle="collapse" data-target="#reviewbox" className='order_online btn-sm m-2'><i class="fa fa-star-o" aria-hidden="true"></i> Review</button>
+                            <button className='order_online btn-sm m-2'><i class="fa fa-bookmark-o" aria-hidden="true"></i> Favourites</button>
+                        </div>
+                            <div className='collapse p-3' style={{border : "1px solid #ccc"}} id='reviewbox'>
+                                <label>
+                                    Rating : 
+                                    {
+                                        starArr.map((item, index)=>{
+                                            return(
+                                                <i onMouseOver={()=>mouseOverHandler(item, index)} onMouseOut={()=>mouseOutHandler(item, index)} style={{cursor : "pointer"}} className={"fa mx-1 "+item.cls} aria-hidden="true"></i>
+
+                                            )
+                                        })
+                                    }
+                                    
+                                             
+                                </label>
+                                <br />
+                                <label>Write Your Review</label>
+                                <textarea className='form-control'></textarea>
+                                <br />
+                                <button className='btn btn-sm btn-primary'>Submit</button>
+                            </div>
+                            <h6 className='mt-3'>&#8377; {hotel.cost}/ Person</h6>
+                            <p>{hotel.desc}</p>
+                            <p><i class="fa fa-map-marker" aria-hidden="true"></i> {hotel.address}</p>
                             <img style={{width : "100%", height : 300}} src='https://media.wired.com/photos/59269cd37034dc5f91bec0f1/191:100/w_1280,c_limit/GoogleMapTA.jpg' />
                             
                         </div>

@@ -1,4 +1,5 @@
 import CusModel from "../models/Cuisine.js";
+import Hotels from "../models/Hotels.js";
 
 let SaveCus = async(req, res)=>{
     let result= await CusModel.create(req.body);
@@ -21,6 +22,7 @@ let UpdateCus = async(req, res)=>{
 let DelteCus = async(req, res)=>{
     let id = req.params.id;
     let result= await CusModel.deleteMany({_id : id});
+    let hotelResult = await Hotels.updateMany({ cuisineId : {$in : [id]} },  { $pull: { cuisineId: id } })
     res.send({success:true, result:result})
 }
 

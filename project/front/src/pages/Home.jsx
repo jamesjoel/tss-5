@@ -59,7 +59,7 @@ const Home = () => {
                     <h6>
                       &#8377; {item.cost}
                     </h6>
-                    <NavLink to="/detail" className='btn btn-link'>More</NavLink>
+                    <NavLink to={`/detail/${item._id}`} className='btn btn-link'>More</NavLink>
                   </div>
                 </div>
               </div>
