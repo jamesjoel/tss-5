@@ -1,0 +1,27 @@
+import User from '../models/User.js'
+import sha1 from 'sha1'
+import jwt from 'jsonwebtoken'
+
+let UserAuth = async(req, res)=>{
+    // console.log(req.body)
+
+    let {username, password} = req.body;
+    let result = await User.find({username : username});
+    // result is an Array
+    if(result.length > 0){ // username is correct
+        if(result[0].password == sha1(password)){
+            
+            let userobj = { id : result[0]._id };
+            let token = jwt.sign(userobj, process.env.ENC_KEY);
+            res.send({success:true, token:token})
+
+        }else{ // username is correct but password is incorrect
+            res.send({success:false, errType : 2})
+        }
+
+    }else{ // username is incorrect
+        res.send({success:false, errType : 1})
+    }
+}
+
+export {UserAuth}

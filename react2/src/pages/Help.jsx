@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import ProductBox from '../components/ProductBox';
 
 const Help = () => {
   let [x, setX] = useState(100);
@@ -14,7 +15,10 @@ const Help = () => {
   }
   
   return (
+    <>
     <div onMouseOut={demo2} onMouseMove={demo1} style={{height : x, width : y, backgroundColor : "red"}}></div>  
+    <ProductBox />
+    </>
   )
 }
 

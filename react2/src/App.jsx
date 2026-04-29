@@ -7,6 +7,9 @@ import Products from './pages/Products'
 import About from './pages/About'
 import Help from './pages/Help'
 import Contact from './pages/Contact'
+import Demo from './pages/Demo'
+import Demo2 from './pages/Demo2'
+import Home2 from './pages/Home2'
 
 const App = () => {
   return (
@@ -19,6 +22,9 @@ const App = () => {
             <Route path='/about' element={<About />} />
             <Route path='/help' element={<Help />} />
             <Route path='/contact' element={<Contact />} />
+            <Route path='/demo' element={<Demo />} />
+            <Route path='/demo2' element={<Demo2 />} />
+            <Route path='/home2' element={<Home2 />} />
         </Routes>
     </div>
     <Footer />

@@ -1,5 +1,10 @@
 import {NavLink} from 'react-router-dom'
+import { useContext } from 'react';
+import NumContext from '../NumContext';
 let Header = ()=>{
+
+    let y = useContext(NumContext)
+
     return(
         <nav className="navbar navbar-expand-sm bg-dark navbar-dark">
             <div className="container-fluid">
@@ -20,6 +25,7 @@ let Header = ()=>{
                         </li>
                         
                     </ul>
+                    <p className='text-light'>{y.x}</p>
                 </div>
             </div>
         </nav>

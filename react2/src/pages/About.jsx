@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import ProductBox from '../components/ProductBox'
 
 const About = () => {
     let [num, setNum] = useState(450)
@@ -31,8 +32,14 @@ const About = () => {
         setB(x);
     }
 
+
   return (
     <div className="container my-4">
+        <ProductBox 
+            title="Samsung" 
+            img="https://images.samsung.com/is/image/samsung/assets/in/smartphones/galaxy-a35/buy/ux2-0/720x480-01_Blue.png" 
+            price={23500}
+        />
         <div className="row">
             <div className="col-md-12">
                 <h1>{num}</h1>

@@ -1,6 +1,14 @@
+import Box1 from "../components/Box1"
+import NameContext from "../NameContext";
+
 const Home = () => {
+  let name = "rohit";
   return (
-    <div>Home</div>
+    <NameContext.Provider value={name}>
+          <div className="container">
+            <Box1 />
+          </div>
+    </NameContext.Provider>
   )
 }
 

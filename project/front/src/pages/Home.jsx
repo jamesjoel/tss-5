@@ -6,6 +6,7 @@ import { useState } from 'react'
 import { useEffect } from 'react'
 import axios from 'axios'
 import useShowDesc from '../hooks/useShowDesc'
+import HotelInof from '../ui/HotelInof'
 const Home = () => {
   let [allHotel, setAllHotel] = useState([])
   useEffect(()=>{
@@ -42,29 +43,7 @@ const Home = () => {
             allHotel.map(item=>{
               return(
                 <>
-                <div className="col-sm-6 col-lg-4 all pizza">
-            <div className="box">
-              <div>
-                <div className="img-box">
-                  <img src="/assets/images/f1.png" alt=""/>
-                </div>
-                <div className="detail-box">
-                  <h5>
-                    {item.name}
-                  </h5>
-                  <p>
-                    {useShowDesc(item.desc)}
-                  </p>
-                  <div className="options">
-                    <h6>
-                      &#8377; {item.cost}
-                    </h6>
-                    <NavLink to={`/detail/${item._id}`} className='btn btn-link'>More</NavLink>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+                <HotelInof item={item} />
                 </>
               )
             })
