@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { useEffect } from 'react';
 import {useParams} from 'react-router-dom'
 import axios from 'axios'
+import useAddForMap from '../hooks/useAddForMap';
 import './Detail.css'
 const Detail = () => {
 
@@ -35,6 +36,7 @@ const Detail = () => {
             axios
             .get(`${import.meta.env.VITE_API_URL}/hotel/${param.id}`)
             .then(response=>{
+                console.log(response.data.result)
                 setHotel(response.data.result)
             })
         }
@@ -110,7 +112,20 @@ const Detail = () => {
                             <h6 className='mt-3'>&#8377; {hotel.cost}/ Person</h6>
                             <p>{hotel.desc}</p>
                             <p><i class="fa fa-map-marker" aria-hidden="true"></i> {hotel.address}</p>
-                            <img style={{width : "100%", height : 300}} src='https://media.wired.com/photos/59269cd37034dc5f91bec0f1/191:100/w_1280,c_limit/GoogleMapTA.jpg' />
+                            {/* <img style={{width : "100%", height : 300}} src='https://media.wired.com/photos/59269cd37034dc5f91bec0f1/191:100/w_1280,c_limit/GoogleMapTA.jpg' /> */}
+                            <div class="map_main">
+                     <div class="map-responsive">
+                        <iframe 
+                            src={`https://www.google.com/maps?q=${hotel.address ? useAddForMap(hotel.address) : ''}&output=embed`}
+                            width="250" 
+                            height="500" 
+                            frameborder="0" 
+                            style={{border:"0", width: "100%"}} 
+                            allowfullscreen="">
+
+                        </iframe>
+                     </div>
+                  </div>
                             
                         </div>
                     </div>

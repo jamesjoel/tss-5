@@ -59,6 +59,8 @@ const Home = () => {
     </div>
   </section>
   <Popular />
+
+  
     </>
   )
 }

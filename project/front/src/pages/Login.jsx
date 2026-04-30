@@ -2,9 +2,14 @@ import React from 'react'
 import {useFormik} from 'formik'
 import LoginSchema from '../schema/LoginSchema'
 import axios from 'axios'
-import { useState } from 'react'
+import { useState, useContext } from 'react'
+import {useNavigate} from 'react-router-dom'
+import AuthContext from '../context/AuthContext'
+
 
 const Login = () => {
+    let navigate = useNavigate();
+    let [loggedIn, setLoggedIn] = useContext(AuthContext);
 
     let [errMsg, setErrMsg] = useState("")
 
@@ -18,8 +23,14 @@ const Login = () => {
             axios
             .post(`${import.meta.env.VITE_API_URL}/userauth`, formData)
             .then(response=>{
-                console.log(response.data)
-                if(response.data.success==false){
+                
+                if(response.data.success==true){
+                    localStorage.setItem("access-token", response.data.token);
+                    setLoggedIn(true)
+                    navigate("/");
+
+                }else{
+                
                     if(response.data.errType==1){
                         setErrMsg("Username & Password is Incorrect !")
                     }

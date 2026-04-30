@@ -6,6 +6,8 @@ import Login from '../pages/Login'
 import Signup from '../pages/Signup'
 import Detail from '../pages/Detail'
 import ViewAll from '../pages/ViewAll'
+import Profile from '../pages/user/Profile'
+import Logout from '../pages/user/Logout'
 const AllRoutes = () => {
   return (
     <Routes>
@@ -15,6 +17,8 @@ const AllRoutes = () => {
         <Route path='/signup' element={<Signup />} />
         <Route path='/detail/:id' element={<Detail />} />
         <Route path='/view-all' element={<ViewAll />} />
+        <Route path='/profile' element={<Profile />} />
+        <Route path='/logout' element={<Logout />} />
 
     </Routes>
   )

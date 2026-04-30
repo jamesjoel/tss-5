@@ -1,7 +1,9 @@
-import React from 'react'
+import React, {useContext} from 'react'
+import AuthContext from '../context/AuthContext'
 import { NavLink } from 'react-router-dom'
 
 const Header = () => {
+  let [loggedIn, setLoggedIn] = useContext(AuthContext);
   return (
     <>
     <div className="hero_area">
@@ -26,15 +28,33 @@ const Header = () => {
                 <NavLink className="nav-link" to="/">Home <span className="sr-only">(current)</span></NavLink>
               </li>
               <li className="nav-item">
+                <NavLink className="nav-link" to="/about">About</NavLink>
+              </li>
+              {
+                loggedIn
+                ?
+                <>
+                <li className="nav-item">
+                <NavLink className="nav-link" to="/profile">Profile <span className="sr-only">(current)</span></NavLink>
+              </li>
+              <li className="nav-item">
+                <NavLink className="nav-link" to="/logout">Logout <span className="sr-only">(current)</span></NavLink>
+              </li>
+                </>
+                :
+                <>
+                <li className="nav-item">
                 <NavLink className="nav-link" to="/login">Login <span className="sr-only">(current)</span></NavLink>
               </li>
               <li className="nav-item">
                 <NavLink className="nav-link" to="/signup">Signup <span className="sr-only">(current)</span></NavLink>
               </li>
+                </>
+              }
               
-              <li className="nav-item">
-                <NavLink className="nav-link" to="/about">About</NavLink>
-              </li>
+              
+              
+              
               
             </ul>
             <div className="user_option">
