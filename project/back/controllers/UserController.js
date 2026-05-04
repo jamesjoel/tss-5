@@ -1,5 +1,6 @@
 import User from "../models/User.js";
 import sha1 from 'sha1'
+import jwt from 'jsonwebtoken'
 
 let SaveUser = async(req, res)=>{
     delete req.body.repassword;
@@ -33,4 +34,21 @@ let DeleteAllUser = async(req, res)=>{
     res.send({success:true, msg : "all user deleted"})
 }
 
-export {SaveUser, GetAllUser, UsernameExists, DeleteAllUser}
+let GetProfile = async(req, res)=>{
+    if(req.headers.authorization){
+        let token = req.headers.authorization;
+        let userobj = jwt.decode(token, process.env.ENC_KEY);
+        if(userobj){
+            let {id} = userobj
+            let result = await User.find({_id : id}, "-password");
+            res.send({success:true, result:result[0]})
+
+        }else{
+            res.send({success:false, message : "Un-Authorized User"})
+        }
+    }else{
+        res.send({success:false, message : "Un-Authorized User"})
+    }
+}
+
+export {SaveUser, GetAllUser, UsernameExists, DeleteAllUser, GetProfile}

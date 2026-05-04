@@ -319,6 +319,9 @@ h6 {
 .bg-gray{
   background-color: #ccc;
 }
+.bg-warning{
+  background-color: #CDA45E !important;
+}
 
 .header .btn-book-a-table,
 .header .btn-book-a-table:focus {
