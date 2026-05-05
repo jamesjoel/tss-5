@@ -1,0 +1,11 @@
+.dd-nav-link{
+    display: block;
+    color: #fff;
+    padding-left: 50px;
+    padding-top: 10px;
+    font-size: 0.875rem;
+}
+.dd-nav-link:hover{
+    color: #4BA74F !important;
+    
+}

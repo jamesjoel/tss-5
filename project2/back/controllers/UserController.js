@@ -7,6 +7,7 @@ let SaveUser = async(req, res)=>{
     req.body.password = sha1(req.body.password)
 
     let result = await User.create(req.body);
+    // { name : "rohit", age : 25}
     res.send({success:true});
 
 }
