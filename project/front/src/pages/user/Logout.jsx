@@ -4,7 +4,10 @@ import AuthContext from '../../context/AuthContext'
 const Logout = () => {
     let [loggedIn, setLoggedIn] = useContext(AuthContext);
     localStorage.removeItem("access-token")
-    setLoggedIn(false)
+    setLoggedIn({
+      isToken : false,
+      name : ""
+    })
 
   return (
     <Navigate to="/login" />

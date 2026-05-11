@@ -6,7 +6,11 @@ import Footer from './components/Footer'
 import AuthContext from './context/AuthContext'
 
 const App = () => {
-  let isLoggedIn = useState(localStorage.getItem("access-token") ? true : false)
+  let obj = { 
+      isToken :  localStorage.getItem("access-token") ? true : false,
+      name : localStorage.getItem("name") ? localStorage.getItem("name") : ""
+    }
+  let isLoggedIn = useState(obj)
   // [false, fn]
 
 

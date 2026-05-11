@@ -39,7 +39,7 @@ const AddAmenities = () => {
                 ProtectedService
             .post('/amenities', formData)
             .then(response=>{
-                // console.log(response.data)
+                console.log(response.data)
                 navigate("/amenities")
             })
             }

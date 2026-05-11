@@ -26,7 +26,11 @@ const Login = () => {
                 
                 if(response.data.success==true){
                     localStorage.setItem("access-token", response.data.token);
-                    setLoggedIn(true)
+                    localStorage.setItem("name", response.data.name);
+                    setLoggedIn({
+                        isToken :  true,
+                        name : localStorage.getItem("name")
+                    })
                     navigate("/");
 
                 }else{

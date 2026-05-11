@@ -31,7 +31,7 @@ const Header = () => {
                 <NavLink className="nav-link" to="/about">About</NavLink>
               </li>
               {
-                loggedIn
+                loggedIn.isToken
                 ?
                 <>
                 <li className="nav-item">
@@ -115,14 +115,16 @@ const Header = () => {
                   </g>
                 </svg>
               </a>
-              <form className="form-inline">
-                <button className="btn  my-2 my-sm-0 nav_search-btn" type="submit">
-                  <i className="fa fa-search" aria-hidden="true"></i>
-                </button>
-              </form>
-              <a href="" className="order_online">
-                Order Online
-              </a>
+              {
+                loggedIn.isToken
+                ?
+              <NavLink to="/profile" className="order_online">
+                {loggedIn.name}
+              </NavLink>
+              :
+              ''
+
+              }
             </div>
           </div>
         </nav>

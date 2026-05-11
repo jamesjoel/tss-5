@@ -13,7 +13,7 @@ let UserAuth = async(req, res)=>{
             
             let userobj = { id : result[0]._id };
             let token = jwt.sign(userobj, process.env.ENC_KEY);
-            res.send({success:true, token:token})
+            res.send({success:true, token:token, name : result[0].fullname})
 
         }else{ // username is correct but password is incorrect
             res.send({success:false, errType : 2})

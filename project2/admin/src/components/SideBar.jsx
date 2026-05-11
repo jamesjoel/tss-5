@@ -11,7 +11,7 @@ const SideBar = () => {
       </NavLink>
     </div>
     <hr className="horizontal light mt-0 mb-2"/>
-    <div className="collapse navbar-collapse  w-auto  max-height-vh-100" id="sidenav-collapse-main">
+    <div className="collapse navbar-collapse w-auto" id="sidenav-collapse-main">
       <ul className="navbar-nav">
         <li className="nav-item">
           <NavLink className="nav-link text-white" to="/">
@@ -47,8 +47,8 @@ const SideBar = () => {
             <span className="nav-link-text ms-1">Hotel</span>
           </NavLink>
           <div className='collapse' id='hotel'>
-            <NavLink className="dd-nav-link" to="/hotel/add">Add</NavLink>
-            <NavLink className="dd-nav-link" to="/hotel">List</NavLink>
+            <NavLink className="dd-nav-link" to="/hotels/add">Add</NavLink>
+            <NavLink className="dd-nav-link" to="/hotels">List</NavLink>
           </div>
 
         </li>

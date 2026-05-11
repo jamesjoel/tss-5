@@ -7,14 +7,8 @@ import AllRoutes from './routes/AllRoutes'
 const App = () => {
   return (
     <>
-    <div className="container-fluid position-relative d-flex p-0">
-        <Sidebar />
-        <div className="content">
-           <Header />
-            <AllRoutes />
-           <Footer />
-        </div>
-      </div>
+    <AllRoutes />
+    
     </>
   )
 }
