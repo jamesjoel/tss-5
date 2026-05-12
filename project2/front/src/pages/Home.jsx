@@ -2,7 +2,21 @@ import React from 'react'
 import Slider from '../component/Slider'
 import WhyUs from '../component/WhyUs'
 import Contact from '../component/Contact'
+import axios from 'axios'
+import { useState } from 'react'
+import { useEffect } from 'react'
 const Home = () => {
+
+  let [allHotel, setAllHotel] = useState([])
+  useEffect(()=>{
+    axios
+    .get(`${import.meta.env.VITE_API_URL}/hotels`)
+    .then(response=>{
+      setAllHotel(response.data.result)
+    })
+  },[])
+
+
   return (
     <>
     <Slider />
@@ -12,114 +26,35 @@ const Home = () => {
     
     
       <div className="container section-title">
-        <h2>Menu</h2>
-        <p>Check Our Tasty Menu</p>
+        <h2>Popular</h2>
+        <p>Hotels</p>
       </div>
 
       <div className="container isotope-layout" data-default-filter="*" data-layout="masonry" data-sort="original-order">
 
-        <div className="row" >
-          <div className="col-lg-12 d-flex justify-content-center">
-            <ul className="menu-filters isotope-filters">
-              <li data-filter="*" className="filter-active">All</li>
-              <li data-filter=".filter-starters">Starters</li>
-              <li data-filter=".filter-salads">Salads</li>
-              <li data-filter=".filter-specialty">Specialty</li>
-            </ul>
-          </div>
-        </div>
+        
 
         <div className="row isotope-container" >
-
-          <div className="col-lg-6 menu-item isotope-item filter-starters">
-            <img src="/assets/img/menu/lobster-bisque.jpg" className="menu-img" alt=""/>
-            <div className="menu-content">
-              <a href="#">Lobster Bisque</a><span>$5.95</span>
+        {
+          allHotel.map(item=><div className='col-md-4 col-lg-4 my-3'>
+            <div className="card-item p-2" style={{backgroundColor : "#0C0B09"}}>
+                <img style={{width : "100%", height : 200}} src='https://pix10.agoda.net/hotelImages/110415/0/d4bca12a1af6a4b3db7cc876d7f5138f.jpg?ce=2&s=414x232' />
+                <div style={{height : 40}} className='d-flex justify-content-between align-items-center'>
+                  <h4 className='my-2'>{item.name}</h4>
+                  <p className='pt-4'>
+                      <i class="fa fa-star me-1" aria-hidden="true"></i>
+                      <i class="fa fa-star me-1" aria-hidden="true"></i>
+                      <i class="fa fa-star me-1" aria-hidden="true"></i>
+                      <i class="fa fa-star-o me-1" aria-hidden="true"></i>
+                      <i class="fa fa-star-o me-1" aria-hidden="true"></i>
+                  </p>   
+                </div>
+                <small>&#8377; {item.cost} per person</small>
+                <p className='mt-2'><i class="fa fa-map-marker" aria-hidden="true"></i> {item.address}</p>
             </div>
-            <div className="menu-ingredients">
-              Lorem, deren, trataro, filede, nerada
-            </div>
-          </div>
-
-          <div className="col-lg-6 menu-item isotope-item filter-specialty">
-            <img src="/assets/img/menu/bread-barrel.jpg" className="menu-img" alt=""/>
-            <div className="menu-content">
-              <a href="#">Bread Barrel</a><span>$6.95</span>
-            </div>
-            <div className="menu-ingredients">
-              Lorem, deren, trataro, filede, nerada
-            </div>
-          </div>
-
-          <div className="col-lg-6 menu-item isotope-item filter-starters">
-            <img src="/assets/img/menu/cake.jpg" className="menu-img" alt=""/>
-            <div className="menu-content">
-              <a href="#">Crab Cake</a><span>$7.95</span>
-            </div>
-            <div className="menu-ingredients">
-              A delicate crab cake served on a toasted roll with lettuce and tartar sauce
-            </div>
-          </div>
-
-          <div className="col-lg-6 menu-item isotope-item filter-salads">
-            <img src="/assets/img/menu/caesar.jpg" className="menu-img" alt=""/>
-            <div className="menu-content">
-              <a href="#">Caesar Selections</a><span>$8.95</span>
-            </div>
-            <div className="menu-ingredients">
-              Lorem, deren, trataro, filede, nerada
-            </div>
-          </div>
-
-          <div className="col-lg-6 menu-item isotope-item filter-specialty">
-            <img src="/assets/img/menu/tuscan-grilled.jpg" className="menu-img" alt=""/>
-            <div className="menu-content">
-              <a href="#">Tuscan Grilled</a><span>$9.95</span>
-            </div>
-            <div className="menu-ingredients">
-              Grilled chicken with provolone, artichoke hearts, and roasted red pesto
-            </div>
-          </div>
-
-          <div className="col-lg-6 menu-item isotope-item filter-starters">
-            <img src="/assets/img/menu/mozzarella.jpg" className="menu-img" alt=""/>
-            <div className="menu-content">
-              <a href="#">Mozzarella Stick</a><span>$4.95</span>
-            </div>
-            <div className="menu-ingredients">
-              Lorem, deren, trataro, filede, nerada
-            </div>
-          </div>
-
-          <div className="col-lg-6 menu-item isotope-item filter-salads">
-            <img src="/assets/img/menu/greek-salad.jpg" className="menu-img" alt=""/>
-            <div className="menu-content">
-              <a href="#">Greek Salad</a><span>$9.95</span>
-            </div>
-            <div className="menu-ingredients">
-              Fresh spinach, crisp romaine, tomatoes, and Greek olives
-            </div>
-          </div>
-
-          <div className="col-lg-6 menu-item isotope-item filter-salads">
-            <img src="/assets/img/menu/spinach-salad.jpg" className="menu-img" alt=""/>
-            <div className="menu-content">
-              <a href="#">Spinach Salad</a><span>$9.95</span>
-            </div>
-            <div className="menu-ingredients">
-              Fresh spinach with mushrooms, hard boiled egg, and warm bacon vinaigrette
-            </div>
-          </div>
-
-          <div className="col-lg-6 menu-item isotope-item filter-specialty">
-            <img src="/assets/img/menu/lobster-roll.jpg" className="menu-img" alt=""/>
-            <div className="menu-content">
-              <a href="#">Lobster Roll</a><span>$12.95</span>
-            </div>
-            <div className="menu-ingredients">
-              Plump lobster meat, mayo and crisp lettuce on a toasted bulky roll
-            </div>
-          </div>
+          </div>)
+        }
+                   
 
         </div>
 

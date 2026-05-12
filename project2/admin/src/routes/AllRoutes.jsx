@@ -6,6 +6,7 @@ import AddCuisine from '../pages/cuisine/AddCuisine'
 import AddAmenities from '../pages/amenities/AddAmenities'
 import ListAmenities from '../pages/amenities/ListAmenities'
 import AddHotels from '../pages/hotels/AddHotels'
+import ListHotels from '../pages/hotels/ListHotels'
 
 
 const AllRoutes = () => {
@@ -18,6 +19,7 @@ const AllRoutes = () => {
         <Route path='/amenities' element={<ListAmenities />} />
         <Route path='/amenities/add' element={<AddAmenities />} />
         <Route path='/hotels/add' element={<AddHotels />} />
+        <Route path='/hotels' element={<ListHotels />} />
     </Routes>
   )
 }
