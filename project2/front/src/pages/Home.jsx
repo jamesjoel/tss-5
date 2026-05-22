@@ -5,7 +5,20 @@ import Contact from '../component/Contact'
 import axios from 'axios'
 import { useState } from 'react'
 import { useEffect } from 'react'
+import Box from '../component/Box'
+import HotelInfoBox from '../ui/HotelInfoBox'
 const Home = () => {
+
+
+  // let a = "Samsung";
+  // let b = 40000.00;
+  // let c = "https://images.samsung.com/is/image/samsung/p6pim/in/sm-a075flvdins/gallery/in-galaxy-a07-sm-a075-sm-a075flvdins-thumb-549346645"
+
+  let info = {
+    name : "Samsung",
+    price : 40000,
+    src : "https://images.samsung.com/is/image/samsung/p6pim/in/sm-a075flvdins/gallery/in-galaxy-a07-sm-a075-sm-a075flvdins-thumb-549346645"
+  }
 
   let [allHotel, setAllHotel] = useState([])
   useEffect(()=>{
@@ -36,23 +49,7 @@ const Home = () => {
 
         <div className="row isotope-container" >
         {
-          allHotel.map(item=><div className='col-md-4 col-lg-4 my-3'>
-            <div className="card-item p-2" style={{backgroundColor : "#0C0B09"}}>
-                <img style={{width : "100%", height : 200}} src='https://pix10.agoda.net/hotelImages/110415/0/d4bca12a1af6a4b3db7cc876d7f5138f.jpg?ce=2&s=414x232' />
-                <div style={{height : 40}} className='d-flex justify-content-between align-items-center'>
-                  <h4 className='my-2'>{item.name}</h4>
-                  <p className='pt-4'>
-                      <i class="fa fa-star me-1" aria-hidden="true"></i>
-                      <i class="fa fa-star me-1" aria-hidden="true"></i>
-                      <i class="fa fa-star me-1" aria-hidden="true"></i>
-                      <i class="fa fa-star-o me-1" aria-hidden="true"></i>
-                      <i class="fa fa-star-o me-1" aria-hidden="true"></i>
-                  </p>   
-                </div>
-                <small>&#8377; {item.cost} per person</small>
-                <p className='mt-2'><i class="fa fa-map-marker" aria-hidden="true"></i> {item.address}</p>
-            </div>
-          </div>)
+          allHotel.map(item=><HotelInfoBox item={item} />)
         }
                    
 
@@ -61,9 +58,16 @@ const Home = () => {
       </div>
 
     </section>
+    
     <Contact />
     </>
   )
 }
 
 export default Home
+
+/*
+
+<input type="text" />
+
+*/

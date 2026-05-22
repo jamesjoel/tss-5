@@ -1,7 +1,11 @@
-import React from 'react'
+import React, {useContext} from 'react'
 import {NavLink} from 'react-router-dom'
+import AuthContext from '../context/AuthContext'
 
 const Header = () => {
+
+  let [isLoggedIn, setIsLoggedIn] = useContext(AuthContext)
+
   return (
      <header id="header" className="header fixed-top">
 
@@ -26,7 +30,7 @@ const Header = () => {
         <nav id="navmenu" className="navmenu d-flex justify-content-center" style={{width : "100%"}}>
           <ul className=''>
             <li><NavLink to="/">Home<br/></NavLink></li>
-            <li><a href="#hero">About<br/></a></li>
+            <li><NavLink to="/about">About<br/></NavLink></li>
             <li><a href="#contact">Contact</a></li>
             
             
@@ -52,8 +56,29 @@ const Header = () => {
         </nav>
           {/* <NavLink class="btn-book-a-table d-none d-xl-block" to="/login">Login</a> */}
           {/* <NavLink class="btn-book-a-table d-none d-xl-block" to="/login">Login</a> */}
+
+
+          {
+            isLoggedIn.isLogged
+            ?
+            <div className='dropdown'>
+            <NavLink data-bs-toggle="dropdown" className="btn-book-a-table d-none d-xl-block" to="/">{isLoggedIn.name}</NavLink>
+            <div className='dropdown-menu'>
+              <NavLink className="dropdown-item" to="/">My Profile</NavLink>
+              <NavLink className="dropdown-item" to="/">Logout</NavLink>
+
+            </div>
+          </div>
+          :
+          <>
           <NavLink className="btn-book-a-table d-none d-xl-block" to="/signup">Signup</NavLink>
           <NavLink className="btn-book-a-table d-none d-xl-block" to="/login">Login</NavLink>
+          </>    
+
+          }    
+          
+          
+          {/*  */}
           
 
         

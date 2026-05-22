@@ -14,9 +14,9 @@ const Home = () => {
 
 
   let clickHandler = ()=>{
-    document.title = "Hello World"
-    dispatch(addStu())
     console.log(frm)
+    dispatch(addStu(frm))
+    setFrm({fname : "", lname : ""})
   }
 
   return (
@@ -27,9 +27,7 @@ const Home = () => {
       <input value={frm.fname} onChange={(e)=>setFrm({...frm, fname : e.target.value})} type='text' placeholder='First Name' className='border-amber-100 bg-white border-2 p-3 text-xl my-2' />
       <input value={frm.lname}  onChange={(e)=>setFrm({...frm, lname : e.target.value})} type='text' placeholder='Last Name' className='border-amber-100 bg-white border-2 p-3 text-xl my-2' />
       <br />
-      {
-        data.map(item=><p>{item}</p>)
-      }
+      
     <button onClick={clickHandler} className='bg-gray-800 text-white py-2 px-10'>OK</button>
     </>
   )

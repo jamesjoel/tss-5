@@ -1,4 +1,5 @@
 import React from 'react'
+import H1 from '../ui/H1'
 
 const WhyUs = () => {
   return (
@@ -8,6 +9,7 @@ const WhyUs = () => {
       <div className="container section-title">
         <h2>WHY US</h2>
         <p>Why Choose Our Restaurant</p>
+        <H1 color="red" txt={"Hello World"}></H1>
       </div>
 
       <div className="container">

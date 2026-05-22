@@ -2,14 +2,17 @@ import {createSlice} from '@reduxjs/toolkit'
 
 let StudentSlice = createSlice({
     name : "student",
-    initialState : ["rohit", "vijay", "ajay"],
+    initialState : [],
     reducers : {
-        addStu(){
-            console.log("******")
+        addStu(state, action){
+            state.push(action.payload)
+        },
+        delStu(state, action){
+            return state.filter(item=>item.fname != action.payload)
         }
     }
 });
 
-export let {addStu} = StudentSlice.actions
+export let {addStu, delStu} = StudentSlice.actions
 
 export default StudentSlice.reducer;

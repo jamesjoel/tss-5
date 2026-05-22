@@ -100,7 +100,7 @@ const Signup = () => {
                             <div className='my-3'>
 
                             <label>Password</label>
-                            <input name='password' onChange={frm.handleChange} type='text' className={'form-control bg-gray my-3 ' + (frm.errors.password && frm.touched.password ? 'is-invalid' : '')} />
+                            <input name='password' onChange={frm.handleChange} type='password' className={'form-control bg-gray my-3 ' + (frm.errors.password && frm.touched.password ? 'is-invalid' : '')} />
                             <small className='text-danger'>
                                 {
                                     frm.errors.password && frm.touched.password
