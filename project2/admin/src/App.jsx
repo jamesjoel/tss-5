@@ -8,13 +8,8 @@ import AllRoutes from './routes/AllRoutes'
 const App = () => {
   return (
     <>
-    <SideBar />
-  
-  <main className="main-content position-relative max-height-vh-100 h-100 border-radius-lg ">
-    <TopBar />
-    <AllRoutes />
-  <Footer />
-  </main>
+    
+  <AllRoutes />
   
     </>
   )

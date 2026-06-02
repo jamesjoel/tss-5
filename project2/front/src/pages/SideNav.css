@@ -1,0 +1,7 @@
+.side-nav .nav-item .nav-link{
+    color: #fff;
+    border-radius: 5px;
+}
+.side-nav .nav-item .nav-link:hover{
+    background-color: #47443f;
+}

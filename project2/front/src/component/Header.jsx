@@ -64,8 +64,8 @@ const Header = () => {
             <div className='dropdown'>
             <NavLink data-bs-toggle="dropdown" className="btn-book-a-table d-none d-xl-block" to="/">{isLoggedIn.name}</NavLink>
             <div className='dropdown-menu'>
-              <NavLink className="dropdown-item" to="/">My Profile</NavLink>
-              <NavLink className="dropdown-item" to="/">Logout</NavLink>
+              <NavLink className="dropdown-item" to="/myprofile">My Profile</NavLink>
+              <NavLink className="dropdown-item" to="/logout">Logout</NavLink>
 
             </div>
           </div>

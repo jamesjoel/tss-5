@@ -11,7 +11,7 @@ let Auth = async(req, res)=>{
         if(result[0].password == sha1(password)){
             let id = result[0]._id;
             let obj = { id : id };
-            let token = jwt.sign(obj, "the stepping stone")
+            let token = jwt.sign(obj, process.env.ENC_KEY)
             res.send({success:true, name : result[0].fullname, token : token})
         }else{
 
