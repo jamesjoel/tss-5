@@ -3,15 +3,22 @@ import {useFormik} from 'formik'
 import {useNavigate} from 'react-router-dom'
 import axios from 'axios'
 import SignupSchema from '../schema/SignupSchema'
+import UnProtectedService from '../services/UnProtectedServices'
 
 const Signup = () => {
     let navigate = useNavigate();
     let [city, setCity] = useState([])
 
+     useEffect(()=>{
+            if(localStorage.getItem("access-token")){
+                navigate("/myprofile")
+            }
+        },[])
+
     useEffect(()=>{
 
-        axios
-        .get(`${import.meta.env.VITE_API_URL}/city`)
+        UnProtectedService
+        .get('/city')
         .then(response=>{
             // console.log(response.data)
             setCity(response.data.result);
@@ -33,8 +40,8 @@ const Signup = () => {
             gender : "",
         },
         onSubmit : (formData)=>{
-            axios
-            .post(`${import.meta.env.VITE_API_URL}/user`, formData)
+            UnProtectedService
+            .post(`/user`, formData)
             .then(response=>{
                 navigate("/login")
                 // console.log(response.data)

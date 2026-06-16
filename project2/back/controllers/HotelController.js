@@ -1,4 +1,6 @@
 import Hotels from "../models/Hotel.js";
+import randstr from 'randomstring'
+import Path from 'path'
 
 let SaveHotel = async(req, res)=>{
     let result = await Hotels.create(req.body)
@@ -11,4 +13,25 @@ let GetAllHotel = async(req, res)=>{
 
 }
 
-export {SaveHotel, GetAllHotel}
+let DeleteAllHotel = async(req, res)=>{
+    await Hotels.deleteMany();
+    res.send({success:true})
+}
+
+let UploadCoverImage = async(req, res)=>{
+    // console.log(randstr.generate(20));
+    // console.log(req.files)
+    let id = req.params.id;
+    let image = req.files.coverImage;
+    let arr = image.name.split(".")
+    let ext = arr[arr.length-1]
+    let newname = randstr.generate(20)+"."+ext;
+    image.mv(Path.resolve()+"/assets/cover/"+newname, async(err)=>{
+        if(err)
+            console.log(err)
+        await Hotels.updateMany({_id : id}, {coverImage : newname});
+        res.send({success:true})
+    });
+}
+
+export {SaveHotel, GetAllHotel, DeleteAllHotel, UploadCoverImage}

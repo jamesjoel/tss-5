@@ -2,7 +2,8 @@ import React from 'react'
 import { NavLink } from 'react-router-dom'
 import './SideNav.css'
 import { useEffect } from 'react'
-import axios from 'axios'
+// import axios from 'axios'
+import ProtectedService from '../services/ProtectedServices'
 import { useState } from 'react'
 import ProfileSideBar from '../component/ProfileSideBar'
 import { useFormik } from 'formik'
@@ -19,10 +20,8 @@ const MyProfile = () => {
         enableReinitialize: true,
         initialValues: personalInfo,
         onSubmit: (formData) => {
-            axios
-            .post(`${import.meta.env.VITE_API_URL}/profile`, formData, {
-                headers: { Authorization: localStorage.getItem("access-token") }
-            })
+            ProtectedService
+            .post(`/profile`, formData)
             .then(response=>{
 
                 // console.log(response.data)
@@ -36,10 +35,8 @@ const MyProfile = () => {
 
 
     useEffect(() => {
-        axios
-            .get(`${import.meta.env.VITE_API_URL}/profile`, {
-                headers: { Authorization: localStorage.getItem("access-token") }
-            })
+        ProtectedService
+            .get(`/profile`)
             .then(response => {
                 console.log(response.data)
                 setUser(response.data.result)
@@ -71,6 +68,7 @@ const MyProfile = () => {
                         <div className="row">
                             <div className="col-md-8 offset-md-2">
                                 <div className='p-3'>
+                                    
                                     <div className='row p-3 my-4' style={{ border: "1px solid #666461" }}>
                                         <div className='d-flex justify-content-between'>
                                             <h4>Personal Information</h4>

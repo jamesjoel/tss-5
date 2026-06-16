@@ -1,9 +1,11 @@
 import express from 'express'
-import { GetAllHotel, SaveHotel } from '../controllers/HotelController.js'
+import { DeleteAllHotel, GetAllHotel, SaveHotel, UploadCoverImage } from '../controllers/HotelController.js'
 
 const routes = express.Router();
 
 routes.post("/", SaveHotel)
 routes.get("/", GetAllHotel)
+routes.get("/deleteall", DeleteAllHotel)
+routes.put("/coverimage/:id", UploadCoverImage)
 
 export default routes;

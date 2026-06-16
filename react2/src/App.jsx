@@ -10,6 +10,7 @@ import Contact from './pages/Contact'
 import Demo from './pages/Demo'
 import Demo2 from './pages/Demo2'
 import Home2 from './pages/Home2'
+import FileUpload from './pages/FileUpload'
 
 const App = () => {
   return (
@@ -25,6 +26,7 @@ const App = () => {
             <Route path='/demo' element={<Demo />} />
             <Route path='/demo2' element={<Demo2 />} />
             <Route path='/home2' element={<Home2 />} />
+            <Route path='/fileupload' element={<FileUpload />} />
         </Routes>
     </div>
     <Footer />

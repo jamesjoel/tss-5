@@ -15,7 +15,8 @@ const HotelSchema = mongoose.Schema({
     desc : String,
     amenitiesId : [{ type : mongoose.Schema.Types.ObjectId, ref : "amenities"}],
     cuisineId : [{ type : mongoose.Schema.Types.ObjectId, ref : "cuisine"}],
-
+    coverImage : {type : String, default : ""},
+    images : []
 }, {timestamps : true})
 
 let Hotels = mongoose.model("hotel", HotelSchema)

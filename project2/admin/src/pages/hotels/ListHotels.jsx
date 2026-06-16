@@ -1,9 +1,17 @@
 import axios from 'axios'
 import React, { useEffect, useRef, useState } from 'react'
+import {Modal} from 'react-bootstrap'
 
 const ListHotels = () => {
 
+    let [coverModelShow, setColverModelShow] = useState(false);
     let [allHotel, setAllHotel] = useState([])
+    let [coverErr, setCoverErr] = useState("")
+    let [coverHotelId, setCoverHotelId] = useState("");
+
+    let coverImageRef = useRef();
+
+
     useEffect(()=>{
         axios
         .get(`${import.meta.env.VITE_API_URL}/hotels`)
@@ -12,8 +20,41 @@ const ListHotels = () => {
         })
     },[])
 
+    let coverModelClose = ()=>setColverModelShow(false)
+    let coverModelOpen = ()=>setColverModelShow(true)
+
+
+    let doUploadCover = ()=>{
+      
+      if(coverImageRef.current.files[0]===undefined){
+        setCoverErr("Please Select Image")
+      }
+      else{
+        setCoverErr("")
+        let file = coverImageRef.current.files[0];
+        if(file.size > (1024*1024*1)){
+          setCoverErr("Please Choose Less then 1MB image")
+        }else{
+          setCoverErr("")
+          // console.log(coverHotelId)
+          let frm = new FormData();
+          frm.append("coverImage", file);
+          axios
+          .put(`${import.meta.env.VITE_API_URL}/hotels/coverimage/${coverHotelId}`, frm)
+          .then(response=>{
+            coverModelClose();
+          })
+        }
+      }
+    }
+
+    let askCoverImage = (id)=>{
+      setCoverHotelId(id);
+      coverModelOpen()
+    }
 
   return (
+    <>
     <div className="container-fluid py-4" style={{minHeight : 700}}>
         <div className="row">
           <div className="col-md-12">
@@ -24,6 +65,7 @@ const ListHotels = () => {
                   <th>Name</th>
                   <th>Person</th>
                   <th>Contact</th>
+                  <th>Images</th>
                   
                 </tr>
               </thead>
@@ -34,6 +76,14 @@ const ListHotels = () => {
                         <td>{item.name}</td>
                         <td>{item.person}</td>
                         <td>{item.contact}</td>
+                        <td>
+                          <button onClick={()=>askCoverImage(item._id)} className='btn btn-sm btn-info m-1'>
+                            <i class="fa fa-file-image-o" aria-hidden="true"></i>
+                          </button>
+                          <button className='btn btn-sm btn-info m-1'>
+                            ...
+                          </button>
+                        </td>
                     </tr>)
                 }
               </tbody>
@@ -41,6 +91,24 @@ const ListHotels = () => {
           </div>
         </div>
     </div>
+
+    <Modal show={coverModelShow} onHide={coverModelClose}>
+           <Modal.Header closeButton>
+                     <Modal.Title>Upload</Modal.Title>
+            </Modal.Header>     
+            <Modal.Body>
+              <div className='my-4'>
+                <label>Select File For Hotel Cover Image</label>
+                <input ref={coverImageRef} accept='.jpg, .jpeg, .png, .gif' type='file' className='form-control' />
+                <small className='text-danger'>{coverErr}</small>
+              </div>
+            </Modal.Body>
+            <Modal.Footer>
+              <button type='submit' onClick={doUploadCover} className='btn btn-success'>Upload</button>
+              <button type='button' onClick={coverModelClose} className='btn btn-danger'>Close</button>
+            </Modal.Footer>
+    </Modal>
+    </>
   )
 }
 

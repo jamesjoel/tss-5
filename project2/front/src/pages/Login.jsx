@@ -1,9 +1,10 @@
-import React, { useState, useContext } from 'react'
+import React, { useState, useContext, useEffect } from 'react'
 import {useFormik} from 'formik'
 import LoginSchema from '../schema/LoginSchema'
 import axios from 'axios'
 import AuthContext from '../context/AuthContext'
-import { useNavigate } from 'react-router-dom'
+import { NavLink, useNavigate } from 'react-router-dom'
+import UnProtectedService from '../services/UnProtectedServices'
 
 const Login = () => {
     let navigate = useNavigate();
@@ -11,6 +12,12 @@ const Login = () => {
     let [isLoggedIn, setIsLoggedIn] = useContext(AuthContext)
 
     let [msg, setMsg] = useState("")
+
+    useEffect(()=>{
+        if(localStorage.getItem("access-token")){
+            navigate("/myprofile")
+        }
+    },[])
     
     let frm = useFormik({
         validationSchema : LoginSchema,
@@ -20,8 +27,8 @@ const Login = () => {
         },
         onSubmit : (formData)=>{
             // console.log(formData)
-            axios
-            .post(`${import.meta.env.VITE_API_URL}/userauth`, formData)
+            UnProtectedService
+            .post(`/userauth`, formData)
             .then(response=>{
                 console.log(response.data)
                 if(response.data.success==true){
@@ -85,6 +92,8 @@ const Login = () => {
                         </div>
                         <div className="card-footer bg-warning">
                             <button type='submit' className='btn btn-dark px-4' style={{borderRadius : 50}}>Login</button>
+                            <br />
+                            <NavLink className={'btn btn-link'} to={'/forgotpassword'}>Forgot Password</NavLink>
                         </div>
                     </div>
                 </div>

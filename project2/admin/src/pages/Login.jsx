@@ -3,8 +3,16 @@ import {useFormik} from 'formik'
 import axios from 'axios'
 import { useState } from 'react'
 import {useNavigate} from 'react-router-dom'
+import { useEffect } from 'react'
 const Login = () => {
     let navigate = useNavigate();
+
+    useEffect(()=>{
+        if(localStorage.getItem(import.meta.env.VITE_ADMIN_ACCESS_TOKEN)){
+            navigate("/dashboard")
+        }
+    },[])
+
     let [errMsg, setErrMsg] = useState("")
     let frm = useFormik({
         initialValues : {

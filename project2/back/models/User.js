@@ -10,6 +10,11 @@ let UserSchema = mongoose.Schema({
     address : String,
     city : String,
     gender : String,
+
+    otp : { default : null, type : Number },
+    fptoken : { default : "", type : String},
+    isforgotpass : {default : false, type : Boolean }
+
 }, {timestamps : true})
 
 let User = mongoose.model("user", UserSchema)

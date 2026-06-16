@@ -2,7 +2,7 @@ import React from 'react'
 import Slider from '../component/Slider'
 import WhyUs from '../component/WhyUs'
 import Contact from '../component/Contact'
-import axios from 'axios'
+import UnProtectedService from '../services/UnProtectedServices'
 import { useState } from 'react'
 import { useEffect } from 'react'
 import Box from '../component/Box'
@@ -22,8 +22,8 @@ const Home = () => {
 
   let [allHotel, setAllHotel] = useState([])
   useEffect(()=>{
-    axios
-    .get(`${import.meta.env.VITE_API_URL}/hotels`)
+    UnProtectedService
+    .get(`/hotels`)
     .then(response=>{
       setAllHotel(response.data.result)
     })
