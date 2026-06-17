@@ -34,4 +34,18 @@ let UploadCoverImage = async(req, res)=>{
     });
 }
 
-export {SaveHotel, GetAllHotel, DeleteAllHotel, UploadCoverImage}
+let UploadMoreImage = async(req, res)=>{
+    // console.log(req.files)
+    let id = req.params.id;
+    let image = req.files.more;
+    let arr = image.name.split(".");
+    let ext = arr[arr.length-1];
+    let newname = randstr.generate(20)+"."+ext;
+    image.mv(Path.resolve()+"/assets/more/"+newname, async(err)=>{
+        if(err)
+            console.log(err);
+        console.log("############")
+    })
+}
+
+export {SaveHotel, GetAllHotel, DeleteAllHotel, UploadCoverImage, UploadMoreImage}

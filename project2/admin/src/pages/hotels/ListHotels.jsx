@@ -4,12 +4,16 @@ import {Modal} from 'react-bootstrap'
 
 const ListHotels = () => {
 
-    let [coverModelShow, setColverModelShow] = useState(false);
+    let [coverModelShow, setCoverModelShow] = useState(false);
+    let [moreModelShow, setMoreModelShow] = useState(false);
     let [allHotel, setAllHotel] = useState([])
     let [coverErr, setCoverErr] = useState("")
+    let [moreErr, setMoreErr] = useState("")
     let [coverHotelId, setCoverHotelId] = useState("");
+    let [moreImageId, setMoreImageId] = useState("")
 
     let coverImageRef = useRef();
+    let moreImageRef = useRef();
 
 
     useEffect(()=>{
@@ -20,8 +24,10 @@ const ListHotels = () => {
         })
     },[])
 
-    let coverModelClose = ()=>setColverModelShow(false)
-    let coverModelOpen = ()=>setColverModelShow(true)
+    let coverModelClose = ()=>setCoverModelShow(false)
+    let coverModelOpen = ()=>setCoverModelShow(true)
+    let moreModelClose = ()=>setMoreModelShow(false)
+    let moreModelOpen = ()=>setMoreModelShow(true)
 
 
     let doUploadCover = ()=>{
@@ -48,9 +54,39 @@ const ListHotels = () => {
       }
     }
 
+    let doUploadMore = ()=>{
+      if(moreImageRef.current.files[0]===undefined){
+        setMoreErr("Please Select Image")
+      }else{
+        setMoreErr("")
+        let file = moreImageRef.current.files[0];
+        if(file.size > (1024*1024*1)){
+          setMoreErr("Please Choose Less then 1MB image")
+        }
+        else{
+          setMoreErr("")
+          let frm = new FormData();
+          // FormData() this is a JavaScript Form Constructor, which create a Form
+          frm.append("more", file)
+          axios
+          .put(`${import.meta.env.VITE_API_URL}/hotels/moreimage/${moreImageId}`, frm)
+          .then(response=>{
+            console.log(response.data)
+          })
+
+        }
+      }
+    }
+
     let askCoverImage = (id)=>{
       setCoverHotelId(id);
       coverModelOpen()
+    }
+
+    let askMoreImage = (id)=>{
+      // console.log(id)
+      setMoreImageId(id)
+      moreModelOpen()
     }
 
   return (
@@ -80,7 +116,7 @@ const ListHotels = () => {
                           <button onClick={()=>askCoverImage(item._id)} className='btn btn-sm btn-info m-1'>
                             <i class="fa fa-file-image-o" aria-hidden="true"></i>
                           </button>
-                          <button className='btn btn-sm btn-info m-1'>
+                          <button onClick={()=>askMoreImage(item._id)} className='btn btn-sm btn-info m-1'>
                             ...
                           </button>
                         </td>
@@ -108,8 +144,34 @@ const ListHotels = () => {
               <button type='button' onClick={coverModelClose} className='btn btn-danger'>Close</button>
             </Modal.Footer>
     </Modal>
+    <Modal show={moreModelShow} onHide={moreModelClose}>
+           <Modal.Header closeButton>
+                     <Modal.Title>Upload</Modal.Title>
+            </Modal.Header>     
+            <Modal.Body>
+              <div className='my-4'>
+                <label>Select Files For More Images </label>
+                <input ref={moreImageRef} accept='.jpg, .jpeg, .png, .gif' type='file' className='form-control' />
+                <small className='text-danger'>{moreErr}</small>
+              </div>
+            </Modal.Body>
+            <Modal.Footer>
+              <button type='submit' onClick={doUploadMore} className='btn btn-success'>Upload</button>
+              <button type='button' onClick={moreModelClose} className='btn btn-danger'>Close</button>
+            </Modal.Footer>
+    </Modal>
     </>
   )
 }
 
 export default ListHotels
+
+/*
+
+int a = 10;
+int b = "10"
+
+if(a===b)
+
+
+*/
