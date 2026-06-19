@@ -71,7 +71,8 @@ const ListHotels = () => {
           axios
           .put(`${import.meta.env.VITE_API_URL}/hotels/moreimage/${moreImageId}`, frm)
           .then(response=>{
-            console.log(response.data)
+            // console.log(response.data)
+            moreModelClose();
           })
 
         }

@@ -11,6 +11,7 @@ import SecuredUserApi from '../util/SecuredUserApi.js'
 import MailRoutes from './MailRoutes.js'
 import HotelDetailRoutes from './HotelDetailRoutes.js'
 import RatingRoutes from './RatingRoutes.js'
+import DonationRoutes from './DonationRoutes.js'
 const routes = express.Router();
 
 routes.use("/api/v1/city", CityRoutes)
@@ -23,6 +24,7 @@ routes.use("/api/v1/adminauth", AdminAuthRoutes)
 routes.use("/api/v1/mail", MailRoutes)
 
 routes.use("/api/v1/profile", SecuredUserApi, UserProfileRoutes)
+routes.use("/api/v1/donation", SecuredUserApi, DonationRoutes)
 routes.use("/api/v1/hoteldetail", HotelDetailRoutes)
 routes.use("/api/v1/rating", RatingRoutes)
 

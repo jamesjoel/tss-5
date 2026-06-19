@@ -17,6 +17,8 @@
     "react-bootstrap": "^2.10.10",
     "react-dom": "^19.2.5",
     "react-router-dom": "^7.14.2",
+    "react-simple-image-slider": "^2.4.1",
+    "react-slick": "^0.31.0",
     "yup": "^1.7.1"
   },
   "devDependencies": {

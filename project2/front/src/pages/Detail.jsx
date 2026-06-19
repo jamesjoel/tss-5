@@ -6,6 +6,7 @@ import UnProtectedService from '../services/UnProtectedServices'
 import Modal from 'react-bootstrap/Modal';
 import {useFormik} from 'formik'
 import ProtectedServices from '../services/ProtectedServices'
+import SimpleImageSlider from "react-simple-image-slider";
 
 import './Detail.css'
 import Rating from '../ui/Rating';
@@ -20,6 +21,7 @@ const Detail = () => {
     let [isStarClick, setIsStarClick] = useState(true)
 
     let [ratingErrMsg, setRatingErrMsg] = useState("");
+    let [imageArr, setImageArr] = useState([])
 
     
 
@@ -101,6 +103,15 @@ const Detail = () => {
             .then(response=>{
                 console.log(response.data)
                 setHotel(response.data.result);
+                let newarr = response.data.result.images.map(item=>{
+                    return(
+                        { url : `${import.meta.env.VITE_API_PATH}/more/${item}`}
+                    )
+                })
+                
+                setImageArr([
+                        {url : `${import.meta.env.VITE_API_PATH}/cover/${response.data.result.coverImage}`},
+                     ...newarr])
             })
         }
     },[])
@@ -152,7 +163,7 @@ const Detail = () => {
                         {hotel.name}
                     </h3>
 
-                    <img
+                    {/* <img
                         style={{
                             width: "100%",
                             height: 400,
@@ -162,7 +173,21 @@ const Detail = () => {
                         }}
                         src={`${import.meta.env.VITE_API_PATH}/cover/${hotel.coverImage}`}
                         alt="Hotel"
+                    /> */}
+                    <div
+                        style={{height : 400}}
+                    >
+                    <SimpleImageSlider 
+                    
+                    width={"100%"}
+                    height={400} 
+                    images={imageArr} 
+                    showBullets={true}
+                    showNavs={true}
+                    autoPlay={true}
+                    autoPlayDelay={.5}
                     />
+                    </div>
 
                     <div className="d-flex mt-3">
                         <button

@@ -44,7 +44,9 @@ let UploadMoreImage = async(req, res)=>{
     image.mv(Path.resolve()+"/assets/more/"+newname, async(err)=>{
         if(err)
             console.log(err);
-        console.log("############")
+        // console.log("############")
+        // await Hotels.updateMany({_id : id }, { images : [newname]})
+        await Hotels.updateMany({_id : id }, { $push : {images : newname}})
     })
 }
 
