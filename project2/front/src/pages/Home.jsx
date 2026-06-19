@@ -8,6 +8,7 @@ import { useEffect } from 'react'
 import Box from '../component/Box'
 import HotelInfoBox from '../ui/HotelInfoBox'
 import Donate from '../component/Donate'
+import {NavLink} from 'react-router-dom'
 const Home = () => {
 
 
@@ -56,6 +57,7 @@ const Home = () => {
 
         </div>
 
+    <NavLink to='/more' className='btn btn-info'>More Hotels</NavLink>
       </div>
 
     </section>

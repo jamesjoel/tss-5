@@ -24,7 +24,7 @@ routes.use("/api/v1/adminauth", AdminAuthRoutes)
 routes.use("/api/v1/mail", MailRoutes)
 
 routes.use("/api/v1/profile", SecuredUserApi, UserProfileRoutes)
-routes.use("/api/v1/donation", SecuredUserApi, DonationRoutes)
+routes.use("/api/v1/donation",  DonationRoutes)
 routes.use("/api/v1/hoteldetail", HotelDetailRoutes)
 routes.use("/api/v1/rating", RatingRoutes)
 

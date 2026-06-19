@@ -1,0 +1,149 @@
+/* ===========================
+   BLACK & GOLD THEME
+=========================== */
+
+body {
+    background-color: #0f0f0f;
+    color: #ffffff;
+}
+
+.container {
+    color: #ffffff;
+}
+
+/* Filter Sidebar */
+.col-md-2 {
+    
+    
+    /* border-radius: 12px; */
+    /* padding: 20px 15px; */
+    /* box-shadow: 0 0 15px rgba(201, 162, 39, 0.15); */
+}
+
+/* Filter Heading */
+.col-md-2 h4 {
+    color: #c9a227;
+    font-weight: 700;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Filter Buttons */
+.col-md-2 .btn {
+    width: 100%;
+    text-align: left;
+    background: transparent;
+    color: #ffffff;
+    border: none;
+    padding: 10px 8px;
+    font-size: 15px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    box-shadow: none !important;
+}
+
+.col-md-2 .btn:hover {
+    color: #c9a227;
+    background: rgba(201, 162, 39, 0.08);
+    border-radius: 6px;
+}
+
+/* Icons */
+.col-md-2 .fa {
+    color: #c9a227;
+    margin-right: 8px;
+}
+
+/* Collapse Content */
+.collapse {
+    background: #1c1c1c;
+    border-left: 2px solid #c9a227;
+    margin-bottom: 10px;
+    border-radius: 0 8px 8px 0;
+}
+
+/* Checkbox Area */
+.collapse .d-flex {
+    padding: 10px 0;
+}
+
+/* Checkbox Labels */
+.collapse div {
+    color: #e0e0e0;
+    margin-bottom: 8px;
+    transition: all 0.3s ease;
+}
+
+.collapse div:hover {
+    color: #c9a227;
+    transform: translateX(4px);
+}
+
+/* Custom Checkbox */
+input[type="checkbox"] {
+    appearance: none;
+    -webkit-appearance: none;
+    width: 16px;
+    height: 16px;
+    border: 2px solid #c9a227;
+    border-radius: 3px;
+    background: #111;
+    cursor: pointer;
+    margin-right: 8px;
+    position: relative;
+    top: 2px;
+}
+
+input[type="checkbox"]:checked {
+    background: #c9a227;
+}
+
+input[type="checkbox"]:checked::after {
+    content: "✓";
+    position: absolute;
+    color: #000;
+    font-size: 11px;
+    font-weight: bold;
+    left: 2px;
+    top: -1px;
+}
+
+/* Right Content Area */
+.col-md-10 {
+    min-height: 650px;
+    /* background: #151515; */
+    
+    /* border-radius: 12px;
+    margin-left: auto;
+    box-shadow: 0 0 15px rgba(201, 162, 39, 0.08); */
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #111;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #c9a227;
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #e0b93d;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .col-md-2 {
+        margin-bottom: 20px;
+    }
+
+    .col-md-10 {
+        min-height: 400px;
+    }
+}

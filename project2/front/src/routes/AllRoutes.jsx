@@ -12,11 +12,13 @@ import ForgotPassword from '../pages/ForgotPassword'
 import Otp from '../pages/Otp'
 import PasswordUpdate from '../pages/PasswordUpdate'
 import Detail from '../pages/Detail'
+import More from '../pages/ViewAll'
 
 const AllRoutes = () => {
   return (
     <Routes>
         <Route path='/' element={<Home />} />
+        <Route path='/more' element={<More />} />
         <Route path='/signup' element={<Signup />} />
         <Route path='/login' element={<Login />} />
         <Route path='/about' element={<About />} />

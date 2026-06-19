@@ -10,6 +10,7 @@ import ListHotels from '../pages/hotels/ListHotels'
 import Login from '../pages/Login'
 import ProtectedRoutes from '../routes/ProtectedRoutes'
 import Logout from '../pages/Logout'
+import Donation from '../pages/Donation'
 
 const AllRoutes = () => {
   return (
@@ -17,6 +18,7 @@ const AllRoutes = () => {
         <Route path='/' element={<Login />} />
         <Route path='' element={<ProtectedRoutes />} >
             <Route path='/dashboard' element={<Dashboard />} />
+            <Route path='/donation' element={<Donation />} />
             <Route path='/cuisine' element={<ListCuisine />} />
             <Route path='/cuisine/add' element={<AddCuisine />} />
             <Route path='/cuisine/edit/:id' element={<AddCuisine />} />

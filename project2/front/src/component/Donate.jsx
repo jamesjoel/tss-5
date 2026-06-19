@@ -14,7 +14,12 @@ const Donate = () => {
                     currency : 'INR',
                     amount : amount*100,
                     handler : (rzpyRes)=>{
-                        console.log(rzpyRes)
+                        // console.log(rzpyRes)
+                        ProtectedService
+                        .post("/donation/paymentdone", {...rzpyRes, amount : amount})
+                        .then(response2=>{
+                            console.log("thanks")
+                        })
                     }
                 }
                 let rzpy = window.Razorpay(data);

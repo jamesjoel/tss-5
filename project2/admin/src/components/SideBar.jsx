@@ -67,6 +67,12 @@ const SideBar = () => {
 
         </li>
         <li className="nav-item">
+          <NavLink className="nav-link text-white" to="/donation">
+            
+            <span className="nav-link-text ms-1">Donation</span>
+          </NavLink>
+        </li>
+        <li className="nav-item">
           <NavLink className="nav-link text-whit" to="/logout">
           
             <span className="nav-link-text ms-1">Logout</span>
