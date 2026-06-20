@@ -13,7 +13,7 @@ const HotelInfoBox = ({item}) => {
                 <img style={{width : "100%", height : 200}} src={`${import.meta.env.VITE_API_PATH}/cover/${item.coverImage}`} />
                 {/* <h1>{`http://localhost:3000/cover/${item.coverImage}`}</h1> */}
                 <div style={{height : 40}} className='d-flex justify-content-between align-items-center'>
-                  <h4 className='my-2'>{item.name}</h4>
+                  <h6 className='my-2'>{item.name}</h6>
                   <p className='pt-4'>
                       <i class="fa fa-star me-1" aria-hidden="true"></i>
                       <i class="fa fa-star me-1" aria-hidden="true"></i>

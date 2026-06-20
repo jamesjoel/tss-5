@@ -12,6 +12,7 @@ import MailRoutes from './MailRoutes.js'
 import HotelDetailRoutes from './HotelDetailRoutes.js'
 import RatingRoutes from './RatingRoutes.js'
 import DonationRoutes from './DonationRoutes.js'
+import HotelFilterRoutes from './HotelFilterRoutes.js'
 const routes = express.Router();
 
 routes.use("/api/v1/city", CityRoutes)
@@ -27,6 +28,7 @@ routes.use("/api/v1/profile", SecuredUserApi, UserProfileRoutes)
 routes.use("/api/v1/donation",  DonationRoutes)
 routes.use("/api/v1/hoteldetail", HotelDetailRoutes)
 routes.use("/api/v1/rating", RatingRoutes)
+routes.use("/api/v1/hotelfilter", HotelFilterRoutes)
 
 
 

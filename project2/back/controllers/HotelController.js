@@ -8,7 +8,7 @@ let SaveHotel = async(req, res)=>{
 }
 
 let GetAllHotel = async(req, res)=>{
-    let result = await Hotels.find();
+    let result = await Hotels.find().sort({createdAt : -1}).limit(4).exec()
     res.send({success:true, result});
 
 }
